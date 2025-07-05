@@ -6,7 +6,6 @@ import {
   OptimizationSuggestion,
   OntologyData,
   CustomerSegment,
-  VoiceAttribute,
   PainPoint,
   RelationshipRule,
   ChannelRecommendation

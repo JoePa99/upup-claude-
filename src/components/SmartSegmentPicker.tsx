@@ -144,7 +144,7 @@ export const SmartSegmentPicker: React.FC<SmartSegmentPickerProps> = ({
       <div className="mb-6">
         <h3 className="text-lg font-semibold mb-2">Choose Your Customer Segment</h3>
         <p className="text-sm text-gray-600">
-          Select the segment that best matches your target audience. We'll customize the context accordingly.
+          Select the segment that best matches your target audience. We&apos;ll customize the context accordingly.
         </p>
       </div>
 
@@ -169,7 +169,7 @@ export const SmartSegmentPicker: React.FC<SmartSegmentPickerProps> = ({
             </span>
           </div>
           <p className="text-sm text-blue-700">
-            Context will be optimized for this segment's preferences, pain points, and communication style.
+            Context will be optimized for this segment&apos;s preferences, pain points, and communication style.
           </p>
         </div>
       )}

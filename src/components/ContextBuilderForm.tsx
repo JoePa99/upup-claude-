@@ -24,7 +24,7 @@ interface FormStep {
   title: string;
   description: string;
   icon: React.ReactNode;
-  component: React.ComponentType<any>;
+  component: React.ComponentType<Record<string, unknown>>;
 }
 
 interface ContextBuilderFormProps {
@@ -274,7 +274,7 @@ export default function ContextBuilderForm({ className }: ContextBuilderFormProp
                       <Label htmlFor="urgency">Urgency Level</Label>
                       <Select 
                         value={formData.urgencyLevel} 
-                        onValueChange={(value: any) => updateFormData({ urgencyLevel: value })}
+                        onValueChange={(value: 'low' | 'medium' | 'high') => updateFormData({ urgencyLevel: value })}
                       >
                         <SelectTrigger>
                           <SelectValue />
@@ -291,7 +291,7 @@ export default function ContextBuilderForm({ className }: ContextBuilderFormProp
                       <Label htmlFor="interaction-type">Interaction Type</Label>
                       <Select 
                         value={formData.interactionType} 
-                        onValueChange={(value: any) => updateFormData({ interactionType: value })}
+                        onValueChange={(value: 'email' | 'presentation' | 'proposal' | 'meeting' | 'social') => updateFormData({ interactionType: value })}
                       >
                         <SelectTrigger>
                           <SelectValue />
@@ -310,7 +310,7 @@ export default function ContextBuilderForm({ className }: ContextBuilderFormProp
                       <Label htmlFor="output-type">Output Type</Label>
                       <Select 
                         value={formData.outputType} 
-                        onValueChange={(value: any) => updateFormData({ outputType: value })}
+                        onValueChange={(value: 'email' | 'presentation' | 'proposal' | 'strategy' | 'content') => updateFormData({ outputType: value })}
                       >
                         <SelectTrigger>
                           <SelectValue />
@@ -330,7 +330,7 @@ export default function ContextBuilderForm({ className }: ContextBuilderFormProp
                     <Label htmlFor="relationship-stage">Relationship Stage</Label>
                     <Select 
                       value={formData.relationshipStage} 
-                      onValueChange={(value: any) => updateFormData({ relationshipStage: value })}
+                      onValueChange={(value: 'first_interaction' | 'established' | 'partnership') => updateFormData({ relationshipStage: value })}
                     >
                       <SelectTrigger>
                         <SelectValue />
