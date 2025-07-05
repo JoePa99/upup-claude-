@@ -1,0 +1,582 @@
+{
+  "customerSegments": [
+    {
+      "id": "independent_sponsor",
+      "name": "Independent Sponsor",
+      "description": "Individual or small team acquiring companies without permanent capital",
+      "demographics": {
+        "ageRange": "30s-40s",
+        "averageAge": 38,
+        "genderSplit": "85% male, 15% female",
+        "education": "95% bachelor's, 70% MBA",
+        "income": "$200k+ variable",
+        "companySize": "1-3 people",
+        "geography": {
+          "northeast": "30%",
+          "southeast": "20%",
+          "midwest": "20%",
+          "texas": "15%",
+          "west_coast": "15%"
+        }
+      },
+      "psychographics": {
+        "primaryMotivations": [
+          "deal_execution_success",
+          "credibility_establishment",
+          "personal_autonomy",
+          "wealth_creation"
+        ],
+        "coreFears": [
+          "deal_failure_zero_return",
+          "capital_partner_unreliability",
+          "reputation_damage",
+          "financial_uncertainty"
+        ],
+        "valuesHierarchy": [
+          "speed_and_certainty",
+          "partnership_over_transaction",
+          "flexibility_and_control",
+          "long_term_relationship_building"
+        ],
+        "workStyle": "always_on_high_travel",
+        "decisionMaking": "roi_driven_speed_focused",
+        "networking": "92% rely on personal networks"
+      },
+      "painPoints": [
+        "capital_raising_friction",
+        "no_margin_for_error",
+        "bandwidth_limitations",
+        "credibility_establishment"
+      ],
+      "journeyStages": [
+        "awareness",
+        "evaluation",
+        "partnership"
+      ],
+      "voicePreferences": [
+        {
+          "primary": "trustworthy",
+          "secondary": "experienced",
+          "situationalModifiers": [
+            {
+              "condition": "first_interaction",
+              "voiceAdjustment": "+empathetic_0.2",
+              "weight": 0.2,
+              "reasoning": "need_to_establish_rapport_before_credibility"
+            },
+            {
+              "condition": "competitive_situation",
+              "voiceAdjustment": "+trustworthy_0.1",
+              "weight": 0.1,
+              "reasoning": "differentiation_requires_confidence"
+            }
+          ]
+        }
+      ],
+      "decisionFactors": [
+        "speed_of_execution",
+        "certainty_of_closing",
+        "partnership_quality",
+        "terms_competitiveness"
+      ],
+      "communicationPreferences": [
+        "direct_efficient_communication",
+        "proof_over_promises",
+        "personal_over_institutional"
+      ]
+    },
+    {
+      "id": "legacy_founder",
+      "name": "Legacy Founder",
+      "description": "Baby boomer business owner planning succession or exit",
+      "demographics": {
+        "ageRange": "55-75",
+        "averageAge": 62,
+        "genderSplit": "70% male, 30% female",
+        "education": "80% bachelor's, 40% advanced degree",
+        "income": "varies by business size",
+        "companySize": "$20M-$100M revenue",
+        "geography": {
+          "distributed": "nationwide with regional concentrations"
+        }
+      },
+      "psychographics": {
+        "primaryMotivations": [
+          "legacy_preservation",
+          "employee_protection",
+          "retirement_planning",
+          "smooth_succession"
+        ],
+        "coreFears": [
+          "wrong_buyer_destroys_culture",
+          "employee_layoffs_post_sale",
+          "legacy_destruction",
+          "inadequate_retirement_funds"
+        ],
+        "valuesHierarchy": [
+          "values_and_culture_fit",
+          "employee_welfare",
+          "company_continuity",
+          "financial_security"
+        ],
+        "workStyle": "relationship_focused_deliberate",
+        "decisionMaking": "consensus_building_cautious",
+        "networking": "industry_associations_and_advisors"
+      },
+      "painPoints": [
+        "legacy_preservation",
+        "cultural_fit_concerns",
+        "employee_security",
+        "succession_complexity"
+      ],
+      "journeyStages": [
+        "awareness",
+        "evaluation",
+        "partnership",
+        "succession"
+      ],
+      "voicePreferences": [
+        {
+          "primary": "empathetic",
+          "secondary": "trustworthy",
+          "situationalModifiers": [
+            {
+              "condition": "family_business",
+              "voiceAdjustment": "+empathetic_0.1",
+              "weight": 0.1,
+              "reasoning": "emotional_attachment_requires_extra_understanding"
+            }
+          ]
+        }
+      ],
+      "decisionFactors": [
+        "cultural_values_alignment",
+        "employee_treatment_plans",
+        "business_continuity",
+        "financial_terms"
+      ],
+      "communicationPreferences": [
+        "relationship_building_first",
+        "face_to_face_meetings",
+        "detailed_explanations"
+      ]
+    }
+  ],
+  "voiceAttributes": [
+    {
+      "id": "trustworthy",
+      "name": "Trustworthy",
+      "description": "Steadfast partner who always delivers",
+      "emotionalTrigger": "reduces_anxiety_builds_confidence",
+      "communicationStyle": "confident_without_arrogance",
+      "proofPoints": [
+        "track_record",
+        "testimonials",
+        "consistency",
+        "transparency"
+      ],
+      "do": [
+        "use_confident_straightforward_language",
+        "emphasize_track_record_with_specifics",
+        "deliver_on_every_promise_made",
+        "speak_in_measured_steady_tone"
+      ],
+      "dont": [
+        "exaggerate_or_over_promise",
+        "use_hype_or_flashy_gimmicks",
+        "hedge_with_weak_language",
+        "sound_arrogant_or_boastful"
+      ],
+      "keyPhrases": [
+        "we_do_what_we_say",
+        "proven_track_record",
+        "you_can_count_on_us",
+        "here's_exactly_what_happens"
+      ]
+    },
+    {
+      "id": "empathetic",
+      "name": "Empathetic",
+      "description": "Partner who truly listens and cares",
+      "emotionalTrigger": "feeling_understood_and_valued",
+      "communicationStyle": "warm_personal_inclusive",
+      "proofPoints": [
+        "time_spent_on_cultural_fit",
+        "ceo_testimonials",
+        "employee_retention_stories"
+      ],
+      "do": [
+        "speak_in_inclusive_terms_we_together",
+        "acknowledge_listeners_perspective_first",
+        "use_anecdotal_relatable_stories",
+        "ask_questions_that_show_understanding"
+      ],
+      "dont": [
+        "dismiss_or_ignore_concerns",
+        "use_formal_impersonal_jargon",
+        "sound_patronizing_or_condescending",
+        "treat_communication_as_one_size_fits_all"
+      ],
+      "keyPhrases": [
+        "we_understand_your_situation",
+        "you're_not_alone_in_this",
+        "let's_work_together_on",
+        "your_perspective_matters"
+      ]
+    },
+    {
+      "id": "experienced",
+      "name": "Experienced",
+      "description": "Seasoned guide with practical wisdom",
+      "emotionalTrigger": "confidence_in_guidance_received",
+      "communicationStyle": "clear_no_nonsense_educational",
+      "proofPoints": [
+        "years_of_experience",
+        "number_of_deals",
+        "industry_awards",
+        "market_cycles_navigated"
+      ],
+      "do": [
+        "explain_complex_ideas_in_plain_english",
+        "reference_lessons_learned_patterns_seen",
+        "be_solution_oriented_with_practical_advice",
+        "share_relevant_industry_insights"
+      ],
+      "dont": [
+        "overwhelm_with_technical_jargon",
+        "brag_about_knowledge_without_relevance",
+        "make_absolute_statements_ignore_nuances"
+      ],
+      "keyPhrases": [
+        "in_our_experience",
+        "we've_seen_this_before",
+        "here's_what_typically_works",
+        "lessons_learned"
+      ]
+    },
+    {
+      "id": "empowering",
+      "name": "Empowering",
+      "description": "Catalyst that unlocks potential",
+      "emotionalTrigger": "feeling_capable_and_supported",
+      "communicationStyle": "encouraging_possibility_focused",
+      "proofPoints": [
+        "growth_stories",
+        "leadership_development",
+        "portfolio_success"
+      ],
+      "do": [
+        "highlight_customer_strengths_and_successes",
+        "use_positive_encouraging_language",
+        "paint_picture_of_better_future_together",
+        "emphasize_partnership_and_mutual_support"
+      ],
+      "dont": [
+        "use_fear_based_messaging_or_scare_tactics",
+        "be_overly_critical_or_negative",
+        "take_cynical_tone_about_prospects",
+        "underplay_client_role_in_success"
+      ],
+      "keyPhrases": [
+        "unlock_your_potential",
+        "together_we_can",
+        "your_success_is_our_success",
+        "you_have_what_it_takes"
+      ]
+    }
+  ],
+  "painPoints": [
+    {
+      "id": "capital_raising_friction",
+      "name": "Capital Raising Friction",
+      "description": "Difficulty and time spent finding and securing capital for deals",
+      "severity": "high",
+      "frequency": "every_deal",
+      "impact": "50% of time spent on capital vs deals",
+      "relatedMessages": [
+        "one_stop_solution_simplifies_capital_stack",
+        "integrated_platform_reduces_complexity",
+        "speed_and_certainty_of_execution"
+      ],
+      "proofPointTypes": [
+        "execution_speed_examples",
+        "integrated_platform_benefits",
+        "sponsor_success_stories"
+      ]
+    },
+    {
+      "id": "no_margin_for_error",
+      "name": "No Margin for Error",
+      "description": "Single deal failure can mean 6-12 months of work with zero return",
+      "severity": "extreme",
+      "frequency": "every_deal",
+      "impact": "existential risk to sponsor business model",
+      "relatedMessages": [
+        "reliable_partner_who_closes_as_promised",
+        "certainty_and_predictability",
+        "risk_mitigation_through_experience"
+      ],
+      "proofPointTypes": [
+        "closing_track_record",
+        "reference_testimonials",
+        "deal_certainty_metrics"
+      ]
+    },
+    {
+      "id": "bandwidth_limitations",
+      "name": "Bandwidth Limitations",
+      "description": "One person handling sourcing, diligence, financing, and operations",
+      "severity": "high",
+      "frequency": "constant",
+      "impact": "limits deal flow and execution quality",
+      "relatedMessages": [
+        "partnership_support_beyond_capital",
+        "expertise_and_resources_sharing",
+        "operational_support_value_add"
+      ],
+      "proofPointTypes": [
+        "value_add_services",
+        "portfolio_support_examples",
+        "resource_sharing_benefits"
+      ]
+    },
+    {
+      "id": "credibility_establishment",
+      "name": "Credibility Establishment",
+      "description": "Building trust and reputation in competitive deal environments",
+      "severity": "medium",
+      "frequency": "frequent",
+      "impact": "affects deal flow and win rates",
+      "relatedMessages": [
+        "institutional_backing_and_credibility",
+        "track_record_and_reputation",
+        "network_and_relationships"
+      ],
+      "proofPointTypes": [
+        "institutional_credentials",
+        "deal_history",
+        "network_testimonials"
+      ]
+    },
+    {
+      "id": "legacy_preservation",
+      "name": "Legacy Preservation",
+      "description": "Ensuring business continues founder's vision and values",
+      "severity": "high",
+      "frequency": "constant",
+      "impact": "emotional and cultural continuity concerns",
+      "relatedMessages": [
+        "values_alignment_and_cultural_fit",
+        "business_continuity_commitment",
+        "legacy_protection_approach"
+      ],
+      "proofPointTypes": [
+        "cultural_fit_examples",
+        "continuity_track_record",
+        "founder_testimonials"
+      ]
+    }
+  ],
+  "journeyStages": [
+    {
+      "id": "awareness",
+      "name": "Awareness",
+      "description": "Initial recognition of need and discovery of potential partners",
+      "duration": "week_1",
+      "actions": [
+        "research_online",
+        "initial_outreach",
+        "network_referrals"
+      ],
+      "touchpoints": [
+        "website",
+        "linkedin",
+        "industry_events",
+        "referrals"
+      ],
+      "mindset": "hopeful_but_cautious",
+      "painPoints": [
+        "unclear_fit",
+        "response_uncertainty",
+        "credibility_assessment"
+      ],
+      "successMetrics": [
+        "response_speed",
+        "initial_interest_signal",
+        "next_step_clarity"
+      ],
+      "preferredChannels": [
+        "linkedin_organic",
+        "industry_publications",
+        "warm_introductions"
+      ]
+    },
+    {
+      "id": "evaluation",
+      "name": "Evaluation",
+      "description": "Detailed assessment of fit and capabilities",
+      "duration": "weeks_3-4",
+      "actions": [
+        "term_sheet_review",
+        "reference_checks",
+        "negotiation",
+        "due_diligence"
+      ],
+      "touchpoints": [
+        "term_sheet",
+        "phone_calls",
+        "meetings",
+        "legal_documents"
+      ],
+      "mindset": "analytical_but_relationship_testing",
+      "painPoints": [
+        "complex_terms",
+        "exclusivity_risk",
+        "trust_verification"
+      ],
+      "successMetrics": [
+        "term_clarity",
+        "flexibility_demonstration",
+        "reference_quality"
+      ],
+      "preferredChannels": [
+        "direct_calls",
+        "video_meetings",
+        "in_person_meetings"
+      ]
+    },
+    {
+      "id": "partnership",
+      "name": "Partnership",
+      "description": "Active working relationship post-closing",
+      "duration": "years_1-5",
+      "actions": [
+        "board_meetings",
+        "reporting",
+        "growth_initiatives",
+        "strategic_planning"
+      ],
+      "touchpoints": [
+        "board_meetings",
+        "quarterly_reports",
+        "strategic_sessions",
+        "informal_updates"
+      ],
+      "mindset": "collaborative_but_performance_focused",
+      "painPoints": [
+        "micromanagement_risk",
+        "covenant_pressure",
+        "alignment_questions"
+      ],
+      "successMetrics": [
+        "growth_achievement",
+        "relationship_quality",
+        "strategic_value_add"
+      ],
+      "preferredChannels": [
+        "board_meetings",
+        "direct_communication",
+        "strategic_sessions"
+      ]
+    }
+  ],
+  "relationshipRules": [
+    {
+      "id": "rule_1",
+      "name": "Independent Sponsor + Capital Friction → Trustworthy Voice",
+      "condition": {
+        "segment": "independent_sponsor",
+        "painPoint": "capital_raising_friction"
+      },
+      "effect": {
+        "voiceAdjustment": {
+          "trustworthy": 0.7,
+          "experienced": 0.3
+        },
+        "messageEmphasis": [
+          "speed_and_certainty",
+          "integrated_platform",
+          "execution_track_record"
+        ],
+        "proofPointPriority": [
+          "closing_speed_examples",
+          "integrated_platform_benefits",
+          "sponsor_references"
+        ]
+      },
+      "priority": 1,
+      "confidence": 0.9
+    },
+    {
+      "id": "rule_2",
+      "name": "Legacy Founder + Legacy Preservation → Empathetic Voice",
+      "condition": {
+        "segment": "legacy_founder",
+        "painPoint": "legacy_preservation"
+      },
+      "effect": {
+        "voiceAdjustment": {
+          "empathetic": 0.8,
+          "trustworthy": 0.2
+        },
+        "messageEmphasis": [
+          "values_alignment",
+          "cultural_continuity",
+          "partnership_approach"
+        ],
+        "proofPointPriority": [
+          "cultural_fit_examples",
+          "founder_testimonials",
+          "continuity_track_record"
+        ]
+      },
+      "priority": 1,
+      "confidence": 0.9
+    },
+    {
+      "id": "rule_3",
+      "name": "Competitive Pressure → Increase Trustworthy Weight",
+      "condition": {
+        "competitiveContext": "multiple_bidders"
+      },
+      "effect": {
+        "voiceAdjustment": {
+          "trustworthy": 0.15
+        },
+        "messageEmphasis": [
+          "certainty_of_close",
+          "differentiation",
+          "execution_superiority"
+        ],
+        "channelPreference": [
+          "direct_personal_communication",
+          "immediate_response"
+        ]
+      },
+      "priority": 2,
+      "confidence": 0.8
+    },
+    {
+      "id": "rule_4",
+      "name": "First Interaction → Add Empathetic Touch",
+      "condition": {
+        "relationshipStage": "first_interaction"
+      },
+      "effect": {
+        "voiceAdjustment": {
+          "empathetic": 0.1
+        },
+        "messageEmphasis": [
+          "understanding_before_selling",
+          "listening_and_learning"
+        ],
+        "channelPreference": [
+          "personal_over_automated",
+          "conversational_tone"
+        ]
+      },
+      "priority": 3,
+      "confidence": 0.7
+    }
+  ]
+}
