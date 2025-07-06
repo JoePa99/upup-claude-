@@ -70,6 +70,7 @@ export default function ContextBuilderForm({ className }: ContextBuilderFormProp
   const [qualityMetrics, setQualityMetrics] = useState<QualityMetrics | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   // Generate context whenever form data changes (with debounce)
   useEffect(() => {
@@ -93,6 +94,7 @@ export default function ContextBuilderForm({ className }: ContextBuilderFormProp
         });
       } catch (error) {
         console.error('Error generating context:', error);
+        setError(error instanceof Error ? error.message : 'Failed to generate context');
       } finally {
         setIsGenerating(false);
       }
@@ -176,12 +178,13 @@ export default function ContextBuilderForm({ className }: ContextBuilderFormProp
   const currentStepData = FORM_STEPS[currentStep];
 
   return (
-    <div className={cn("max-w-6xl mx-auto p-6", className)}>
+    <div className={cn("max-w-6xl mx-auto", className)}>
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">AI Context Builder</h1>
-        <p className="text-gray-600 mb-6">
-          Build intelligent context for better AI interactions with your customers
-        </p>
+        {error && (
+          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+            <p className="text-red-800 text-sm">{error}</p>
+          </div>
+        )}
 
         {/* Progress Bar */}
         <div className="w-full bg-gray-200 rounded-full h-2 mb-6">
