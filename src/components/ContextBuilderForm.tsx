@@ -24,7 +24,6 @@ interface FormStep {
   title: string;
   description: string;
   icon: React.ReactNode;
-  component?: React.ComponentType;
 }
 
 interface ContextBuilderFormProps {
@@ -46,22 +45,19 @@ const FORM_STEPS: FormStep[] = [
     id: 'segment',
     title: 'Customer Segment',
     description: 'Identify your target audience',
-    icon: <Users className="h-5 w-5" />,
-    component: SmartSegmentPicker
+    icon: <Users className="h-5 w-5" />
   },
   {
     id: 'pain_points',
     title: 'Pain Points',
     description: 'Prioritize customer challenges',
-    icon: <Target className="h-5 w-5" />,
-    component: DragDropPainPointRanker
+    icon: <Target className="h-5 w-5" />
   },
   {
     id: 'context',
     title: 'Context & Output',
     description: 'Situational details and output type',
-    icon: <Zap className="h-5 w-5" />,
-    component: () => null // Handled inline
+    icon: <Zap className="h-5 w-5" />
   }
 ];
 
