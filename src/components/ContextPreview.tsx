@@ -8,8 +8,6 @@ import { Progress } from './ui/progress';
 import { GeneratedContext, QualityMetrics } from '@/types/ontology';
 import { cn } from '@/utils/cn';
 import { 
-  Eye, 
-  EyeOff, 
   Copy, 
   Download, 
   CheckCircle, 
@@ -87,16 +85,6 @@ const QualityMetricCard: React.FC<QualityMetricCardProps> = ({
   );
 };
 
-interface PromptSectionProps {
-  title: string;
-  content: string;
-  isExpanded: boolean;
-  onToggle: () => void;
-  copyable?: boolean;
-}
-
-// Legacy component - removed from UI but kept for compatibility
-const PromptSection: React.FC<PromptSectionProps> = () => null;
 
 export const ContextPreview: React.FC<ContextPreviewProps> = ({
   generatedContext,
@@ -104,9 +92,6 @@ export const ContextPreview: React.FC<ContextPreviewProps> = ({
   isLoading = false,
   className
 }) => {
-  // Legacy state - no longer used in simplified UI
-  const [, setExpandedSections] = useState<Record<string, boolean>>({});
-  const toggleSection = () => {};
 
   const handleDownload = () => {
     if (!generatedContext) return;
