@@ -68,13 +68,17 @@ const QualityMetricCard: React.FC<QualityMetricCardProps> = ({
         </div>
       </CardHeader>
       <CardContent>
-        <Progress 
-          value={score} 
-          className="mb-3"
-          style={{
-            '--progress-foreground': getProgressColor(score)
-          } as React.CSSProperties}
-        />
+        <div className="mb-3">
+          <Progress 
+            value={score} 
+            className={cn(
+              "h-2",
+              score >= 80 ? "[&>div]:bg-green-500" : 
+              score >= 60 ? "[&>div]:bg-yellow-500" : 
+              "[&>div]:bg-red-500"
+            )}
+          />
+        </div>
         <p className="text-xs text-gray-600 mb-3">{description}</p>
         {suggestions.length > 0 && (
           <div className="space-y-1">
@@ -265,10 +269,12 @@ export const ContextPreview: React.FC<ContextPreviewProps> = ({
         <CardContent>
           <Progress 
             value={overallScore} 
-            className="mb-4"
-            style={{
-              '--progress-foreground': overallScore >= 80 ? '#10b981' : overallScore >= 60 ? '#f59e0b' : '#ef4444'
-            } as React.CSSProperties}
+            className={cn(
+              "mb-4 h-3",
+              overallScore >= 80 ? "[&>div]:bg-green-500" : 
+              overallScore >= 60 ? "[&>div]:bg-yellow-500" : 
+              "[&>div]:bg-red-500"
+            )}
           />
           
           {generatedContext.suggestions.length > 0 && (
