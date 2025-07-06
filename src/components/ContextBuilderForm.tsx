@@ -311,6 +311,11 @@ export default function ContextBuilderForm({ className }: ContextBuilderFormProp
               generatedContext={generatedContext}
               qualityMetrics={qualityMetrics}
               isLoading={isGenerating}
+              formData={{
+                segment: formData.segment,
+                journeyStage: formData.journeyStage,
+                urgencyLevel: formData.urgencyLevel
+              }}
             />
           </div>
         </div>
