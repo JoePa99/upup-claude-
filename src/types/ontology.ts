@@ -272,15 +272,266 @@ export interface SuggestionResponse {
   confidence: number;
 }
 
-// Ontology Data Structure
+// Enhanced Enterprise Ontology Data Structure
 export interface OntologyData {
+  foundation: FoundationLayer;
+  market: MarketLayer;
   customerSegments: CustomerSegment[];
+  offerings: OfferingsLayer;
+  engagement: EngagementLayer;
+  relationships: RelationshipsLayer;
+  intelligence: IntelligenceLayer;
   voiceAttributes: VoiceAttribute[];
   painPoints: PainPoint[];
   journeyStages: JourneyStage[];
   messageFrameworks?: MessageFramework[];
   competitiveContexts?: CompetitiveContext[];
   relationshipRules: RelationshipRule[];
+}
+
+// Foundation Layer - Company Identity & Business Model
+export interface FoundationLayer {
+  companyProfile: EnterpriseCompanyProfile;
+  businessModel: BusinessModel;
+  brandPersonality: BrandPersonality;
+}
+
+export interface EnterpriseCompanyProfile {
+  name: string;
+  foundedYear: number;
+  headquarters: string;
+  missionStatement: string;
+  coreValues: string[];
+  culturalAttributes: CulturalAttributes;
+}
+
+export interface CulturalAttributes {
+  decisionMaking: string;
+  riskTolerance: string;
+  communicationStyle: string;
+  workingStyle: string;
+}
+
+export interface BusinessModel {
+  primaryModel: string;
+  revenueStreams: RevenueStream[];
+  valueProposition: ValueProposition;
+}
+
+export interface RevenueStream {
+  type: string;
+  percentage: number;
+  description: string;
+}
+
+export interface ValueProposition {
+  primary: string;
+  differentiators: string[];
+  competitiveAdvantages: string[];
+}
+
+export interface BrandPersonality {
+  archetype: string;
+  tonalAttributes: TonalAttributes;
+  brandPromise: string;
+  emotionalBenefits: string[];
+}
+
+export interface TonalAttributes {
+  primary: string;
+  secondary: string;
+  situational: string;
+}
+
+// Market Layer - Segment Hierarchy & Market Dynamics
+export interface MarketLayer {
+  segmentHierarchy: SegmentHierarchy;
+  marketDynamics: MarketDynamics;
+}
+
+export interface SegmentHierarchy {
+  primarySegments: string[];
+  subSegments: Record<string, string[]>;
+  crossSegmentBehaviors: CrossSegmentBehaviors;
+}
+
+export interface CrossSegmentBehaviors {
+  deal_size_preferences: Record<string, string>;
+  industry_focus: string[];
+}
+
+export interface MarketDynamics {
+  competitiveLandscape: CompetitiveLandscape;
+  marketTrends: MarketTrends;
+}
+
+export interface CompetitiveLandscape {
+  directCompetitors: string[];
+  indirectCompetitors: string[];
+  competitiveThreats: string[];
+  marketOpportunities: string[];
+}
+
+export interface MarketTrends {
+  emerging: string[];
+  declining: string[];
+}
+
+// Offerings Layer - Services & Value Creation
+export interface OfferingsLayer {
+  coreServices: CoreService[];
+  valueAddServices: ValueAddService[];
+  successFrameworks: SuccessFrameworks;
+}
+
+export interface CoreService {
+  id: string;
+  name: string;
+  description: string;
+  targetSegments: string[];
+  valueDrivers: string[];
+  deliveryModel: string;
+  typicalEngagement: string;
+}
+
+export interface ValueAddService {
+  category: string;
+  services: string[];
+}
+
+export interface SuccessFrameworks {
+  valueCreation: ValueCreation;
+}
+
+export interface ValueCreation {
+  operational: string[];
+  strategic: string[];
+  financial: string[];
+}
+
+// Engagement Layer - Customer Journey & Channel Strategy
+export interface EngagementLayer {
+  customerJourneyMapping: CustomerJourneyMapping;
+  channelStrategy: ChannelStrategy;
+}
+
+export interface CustomerJourneyMapping {
+  dynamicStages: DynamicStages;
+  touchpointOptimization: TouchpointOptimization;
+}
+
+export interface DynamicStages {
+  triggers: Record<string, string[]>;
+  regressionRisks: Record<string, string[]>;
+}
+
+export interface TouchpointOptimization {
+  high_impact_moments: string[];
+  relationship_building: string[];
+}
+
+export interface ChannelStrategy {
+  omnichannel: OmnichannelStrategy;
+  channelEffectiveness: Record<string, Record<string, Record<string, number>>>;
+}
+
+export interface OmnichannelStrategy {
+  digital: ChannelGroup;
+  traditional: ChannelGroup;
+}
+
+export interface ChannelGroup {
+  primary: string[];
+  emerging?: string[];
+  specialized?: string[];
+}
+
+// Relationships Layer - Stakeholder Ecosystem
+export interface RelationshipsLayer {
+  stakeholderEcosystem: StakeholderEcosystem;
+  relationshipManagement: RelationshipManagement;
+}
+
+export interface StakeholderEcosystem {
+  primary: StakeholderGroup;
+  secondary: StakeholderGroup;
+}
+
+export interface StakeholderGroup {
+  [category: string]: Record<string, StakeholderProfile>;
+}
+
+export interface StakeholderProfile {
+  influence: 'low' | 'medium' | 'high';
+  relationship_type: string;
+  key_concerns: string[];
+}
+
+export interface RelationshipManagement {
+  stakeholder_priorities: Record<string, string[]>;
+  communication_cadence: Record<string, string>;
+}
+
+// Intelligence Layer - Contextual Rules & Performance Tracking
+export interface IntelligenceLayer {
+  contextualRulesEngine: ContextualRulesEngine;
+  performanceTracking: PerformanceTracking;
+}
+
+export interface ContextualRulesEngine {
+  adaptiveMessaging: AdaptiveMessaging;
+  dynamic_personalization: DynamicPersonalization;
+}
+
+export interface AdaptiveMessaging {
+  situational_modifiers: SituationalModifier[];
+  cultural_modifiers: CulturalModifiers;
+}
+
+export interface CulturalModifiers {
+  regional_differences: Record<string, RegionalProfile>;
+  industry_preferences: Record<string, IndustryProfile>;
+}
+
+export interface RegionalProfile {
+  pace: string;
+  style: string;
+  relationship: string;
+}
+
+export interface IndustryProfile {
+  communication: string;
+  proof_points: string;
+  timeline: string;
+}
+
+export interface DynamicPersonalization {
+  behavioral_triggers: BehavioralTrigger[];
+}
+
+export interface BehavioralTrigger {
+  trigger: string;
+  personality_indicator: string;
+  messaging_adaptation: string;
+}
+
+export interface PerformanceTracking {
+  leadingIndicators: IndicatorGroup;
+  laggingIndicators: IndicatorGroup;
+  optimization_framework: OptimizationFramework;
+}
+
+export interface IndicatorGroup {
+  [category: string]: string[];
+}
+
+export interface OptimizationFramework {
+  continuous_improvement: ContinuousImprovement;
+}
+
+export interface ContinuousImprovement {
+  feedback_loops: string[];
+  adaptation_triggers: string[];
 }
 
 export interface RelationshipRule {

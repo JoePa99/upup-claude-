@@ -1,4 +1,143 @@
 {
+  "foundation": {
+    "companyProfile": {
+      "name": "Plexus Capital",
+      "foundedYear": 2015,
+      "headquarters": "New York, NY", 
+      "missionStatement": "Partnering with independent sponsors and founders to build exceptional companies through strategic capital and operational expertise",
+      "coreValues": [
+        "partnership_over_transaction",
+        "operational_excellence", 
+        "long_term_value_creation",
+        "entrepreneurial_spirit"
+      ],
+      "culturalAttributes": {
+        "decisionMaking": "collaborative_data_driven",
+        "riskTolerance": "calculated_aggressive",
+        "communicationStyle": "direct_transparent",
+        "workingStyle": "high_urgency_relationship_focused"
+      }
+    },
+    "businessModel": {
+      "primaryModel": "private_equity_partnership",
+      "revenueStreams": [
+        {
+          "type": "management_fees", 
+          "percentage": 15,
+          "description": "Annual management fees on committed capital"
+        },
+        {
+          "type": "carried_interest",
+          "percentage": 75,
+          "description": "Performance-based returns from successful exits"
+        },
+        {
+          "type": "transaction_fees",
+          "percentage": 10,
+          "description": "Fees from deal origination and closing services"
+        }
+      ],
+      "valueProposition": {
+        "primary": "integrated_capital_platform",
+        "differentiators": [
+          "independent_sponsor_specialization",
+          "operational_value_add", 
+          "speed_of_execution",
+          "flexible_capital_solutions"
+        ],
+        "competitiveAdvantages": [
+          "proprietary_sponsor_network",
+          "industry_specialized_teams",
+          "proven_value_creation_playbook",
+          "institutional_backing_with_entrepreneurial_approach"
+        ]
+      }
+    },
+    "brandPersonality": {
+      "archetype": "trusted_advisor_and_catalyst",
+      "tonalAttributes": {
+        "primary": "trustworthy",
+        "secondary": "experienced", 
+        "situational": "empathetic"
+      },
+      "brandPromise": "We deliver certainty in uncertain markets through proven expertise and unwavering partnership",
+      "emotionalBenefits": [
+        "confidence_in_partnership",
+        "reduced_execution_anxiety",
+        "empowerment_through_resources",
+        "belonging_to_success_network"
+      ]
+    }
+  },
+  "market": {
+    "segmentHierarchy": {
+      "primarySegments": [
+        "independent_sponsors",
+        "legacy_founders"
+      ],
+      "subSegments": {
+        "independent_sponsors": [
+          "serial_entrepreneurs",
+          "first_time_sponsors", 
+          "search_fund_operators"
+        ],
+        "legacy_founders": [
+          "family_business_owners",
+          "technology_founders",
+          "manufacturing_owners"
+        ]
+      },
+      "crossSegmentBehaviors": {
+        "deal_size_preferences": {
+          "small": "$5M-$25M",
+          "mid": "$25M-$100M", 
+          "large": "$100M+"
+        },
+        "industry_focus": [
+          "business_services",
+          "technology",
+          "healthcare", 
+          "manufacturing",
+          "consumer"
+        ]
+      }
+    },
+    "marketDynamics": {
+      "competitiveLandscape": {
+        "directCompetitors": [
+          "other_private_equity_firms",
+          "family_offices",
+          "mezzanine_funds"
+        ],
+        "indirectCompetitors": [
+          "strategic_buyers",
+          "debt_financing",
+          "self_funding"
+        ],
+        "competitiveThreats": [
+          "market_saturation",
+          "pricing_pressure",
+          "talent_competition"
+        ],
+        "marketOpportunities": [
+          "independent_sponsor_growth",
+          "succession_planning_wave",
+          "technology_adoption_gaps"
+        ]
+      },
+      "marketTrends": {
+        "emerging": [
+          "ESG_integration",
+          "digital_transformation_acceleration",
+          "talent_retention_focus"
+        ],
+        "declining": [
+          "traditional_leveraged_buyouts",
+          "purely_financial_engineering"
+        ]
+      }
+    }
+  },
   "customerSegments": [
     {
       "id": "independent_sponsor",
@@ -480,6 +619,309 @@
       ]
     }
   ],
+  "offerings": {
+    "coreServices": [
+      {
+        "id": "equity_partnership",
+        "name": "Equity Partnership",
+        "description": "Primary equity investment with strategic partnership",
+        "targetSegments": ["independent_sponsor", "legacy_founder"],
+        "valueDrivers": [
+          "growth_capital",
+          "operational_expertise",
+          "network_access",
+          "strategic_guidance"
+        ],
+        "deliveryModel": "partnership_based",
+        "typicalEngagement": "3-7_years"
+      },
+      {
+        "id": "capital_solutions",
+        "name": "Flexible Capital Solutions",
+        "description": "Tailored financing structures for complex situations",
+        "targetSegments": ["independent_sponsor"],
+        "valueDrivers": [
+          "speed_of_execution",
+          "flexible_terms",
+          "certainty_of_close"
+        ],
+        "deliveryModel": "transaction_based",
+        "typicalEngagement": "3-6_months"
+      }
+    ],
+    "valueAddServices": [
+      {
+        "category": "operational_improvement",
+        "services": [
+          "performance_optimization",
+          "digital_transformation",
+          "talent_acquisition",
+          "process_improvement"
+        ]
+      },
+      {
+        "category": "strategic_development",
+        "services": [
+          "market_expansion",
+          "acquisition_strategy",
+          "competitive_positioning",
+          "exit_planning"
+        ]
+      }
+    ],
+    "successFrameworks": {
+      "valueCreation": {
+        "operational": [
+          "revenue_growth",
+          "margin_expansion",
+          "efficiency_gains"
+        ],
+        "strategic": [
+          "market_position_strengthening",
+          "competitive_advantage_building",
+          "scalability_enhancement"
+        ],
+        "financial": [
+          "capital_efficiency",
+          "risk_mitigation",
+          "exit_optimization"
+        ]
+      }
+    }
+  },
+  "engagement": {
+    "customerJourneyMapping": {
+      "dynamicStages": {
+        "triggers": {
+          "awareness_to_evaluation": [
+            "initial_response_received",
+            "credibility_established",
+            "mutual_interest_confirmed"
+          ],
+          "evaluation_to_partnership": [
+            "terms_agreed",
+            "due_diligence_completed",
+            "legal_documentation_finalized"
+          ],
+          "partnership_to_growth": [
+            "value_creation_plan_implemented",
+            "performance_targets_met",
+            "strategic_initiatives_launched"
+          ]
+        },
+        "regressionRisks": {
+          "evaluation_to_awareness": [
+            "terms_misalignment",
+            "trust_breakdown",
+            "competitive_pressure"
+          ],
+          "partnership_to_evaluation": [
+            "performance_concerns",
+            "strategic_disagreements",
+            "market_changes"
+          ]
+        }
+      },
+      "touchpointOptimization": {
+        "high_impact_moments": [
+          "first_response_speed",
+          "term_sheet_presentation",
+          "reference_quality",
+          "closing_execution"
+        ],
+        "relationship_building": [
+          "personal_connection_establishment",
+          "trust_demonstration",
+          "value_proof_delivery"
+        ]
+      }
+    },
+    "channelStrategy": {
+      "omnichannel": {
+        "digital": {
+          "primary": ["linkedin", "email", "website"],
+          "emerging": ["video_platforms", "industry_portals"]
+        },
+        "traditional": {
+          "primary": ["phone", "in_person", "events"],
+          "specialized": ["industry_conferences", "referral_networks"]
+        }
+      },
+      "channelEffectiveness": {
+        "independent_sponsor": {
+          "awareness": {"linkedin": 0.8, "referrals": 0.9, "events": 0.7},
+          "evaluation": {"phone": 0.9, "in_person": 0.95, "video": 0.8},
+          "partnership": {"in_person": 0.95, "phone": 0.85, "email": 0.7}
+        },
+        "legacy_founder": {
+          "awareness": {"referrals": 0.95, "industry_publications": 0.8, "events": 0.85},
+          "evaluation": {"in_person": 0.95, "phone": 0.9, "detailed_proposals": 0.85},
+          "partnership": {"board_meetings": 0.95, "strategic_sessions": 0.9, "informal_updates": 0.8}
+        }
+      }
+    }
+  },
+  "relationships": {
+    "stakeholderEcosystem": {
+      "primary": {
+        "investors": {
+          "limited_partners": {
+            "influence": "high",
+            "relationship_type": "fiduciary",
+            "key_concerns": ["returns", "risk_management", "reporting_transparency"]
+          },
+          "portfolio_companies": {
+            "influence": "high",
+            "relationship_type": "partnership",
+            "key_concerns": ["growth_support", "strategic_guidance", "value_creation"]
+          }
+        },
+        "intermediaries": {
+          "investment_bankers": {
+            "influence": "medium",
+            "relationship_type": "transactional",
+            "key_concerns": ["deal_flow", "execution_capability", "fee_structure"]
+          },
+          "brokers": {
+            "influence": "medium",
+            "relationship_type": "referral",
+            "key_concerns": ["client_satisfaction", "transaction_success", "relationship_quality"]
+          }
+        }
+      },
+      "secondary": {
+        "advisors": {
+          "legal_counsel": {
+            "influence": "medium",
+            "relationship_type": "professional",
+            "key_concerns": ["documentation_quality", "risk_mitigation", "compliance"]
+          },
+          "accountants": {
+            "influence": "low",
+            "relationship_type": "professional",
+            "key_concerns": ["financial_accuracy", "tax_optimization", "reporting_standards"]
+          }
+        },
+        "industry": {
+          "competitors": {
+            "influence": "medium",
+            "relationship_type": "competitive",
+            "key_concerns": ["market_positioning", "talent_competition", "deal_competition"]
+          },
+          "industry_associations": {
+            "influence": "low",
+            "relationship_type": "professional",
+            "key_concerns": ["industry_standards", "regulatory_compliance", "best_practices"]
+          }
+        }
+      }
+    },
+    "relationshipManagement": {
+      "stakeholder_priorities": {
+        "high_touch": ["portfolio_companies", "limited_partners", "key_sponsors"],
+        "medium_touch": ["investment_bankers", "legal_counsel", "industry_contacts"],
+        "low_touch": ["competitors", "industry_associations", "media"]
+      },
+      "communication_cadence": {
+        "portfolio_companies": "monthly_formal_weekly_informal",
+        "limited_partners": "quarterly_formal_monthly_updates",
+        "key_sponsors": "deal_driven_opportunistic"
+      }
+    }
+  },
+  "intelligence": {
+    "contextualRulesEngine": {
+      "adaptiveMessaging": {
+        "situational_modifiers": [
+          {
+            "condition": "high_competitive_pressure",
+            "messaging_adjustments": {
+              "urgency_increase": 0.3,
+              "differentiation_emphasis": 0.4,
+              "trust_building_acceleration": 0.2
+            },
+            "channel_preferences": ["direct_phone", "in_person_meeting"],
+            "response_time_target": "within_2_hours"
+          },
+          {
+            "condition": "family_business_legacy_concerns",
+            "messaging_adjustments": {
+              "empathy_increase": 0.4,
+              "cultural_sensitivity": 0.3,
+              "continuity_emphasis": 0.3
+            },
+            "channel_preferences": ["in_person_meeting", "detailed_proposal"],
+            "response_time_target": "thoughtful_considered"
+          }
+        ],
+        "cultural_modifiers": {
+          "regional_differences": {
+            "northeast": {"pace": "fast", "style": "direct", "relationship": "transactional_first"},
+            "southeast": {"pace": "measured", "style": "relationship_first", "relationship": "personal_connection"},
+            "midwest": {"pace": "steady", "style": "straightforward", "relationship": "trust_based"},
+            "texas": {"pace": "assertive", "style": "confident", "relationship": "results_oriented"},
+            "west_coast": {"pace": "innovative", "style": "collaborative", "relationship": "value_alignment"}
+          },
+          "industry_preferences": {
+            "technology": {"communication": "data_driven", "proof_points": "metrics_focused", "timeline": "accelerated"},
+            "manufacturing": {"communication": "operational_focused", "proof_points": "efficiency_examples", "timeline": "measured"},
+            "healthcare": {"communication": "regulatory_aware", "proof_points": "compliance_track_record", "timeline": "deliberate"}
+          }
+        }
+      },
+      "dynamic_personalization": {
+        "behavioral_triggers": [
+          {
+            "trigger": "quick_response_to_outreach",
+            "personality_indicator": "action_oriented",
+            "messaging_adaptation": "concise_next_steps_focused"
+          },
+          {
+            "trigger": "detailed_questions_in_evaluation",
+            "personality_indicator": "analytical_thorough",
+            "messaging_adaptation": "comprehensive_data_rich"
+          },
+          {
+            "trigger": "reference_check_emphasis",
+            "personality_indicator": "relationship_validation_focused",
+            "messaging_adaptation": "testimonial_heavy_trust_building"
+          }
+        ]
+      }
+    },
+    "performanceTracking": {
+      "leadingIndicators": {
+        "engagement_metrics": [
+          "response_rate_by_channel",
+          "meeting_acceptance_rate",
+          "referral_generation_rate"
+        ],
+        "relationship_quality": [
+          "trust_indicator_score",
+          "partnership_satisfaction",
+          "stakeholder_net_promoter_score"
+        ]
+      },
+      "laggingIndicators": {
+        "business_outcomes": [
+          "deal_closure_rate",
+          "average_deal_size",
+          "portfolio_performance"
+        ],
+        "relationship_outcomes": [
+          "repeat_business_rate",
+          "referral_conversion_rate",
+          "long_term_partnership_retention"
+        ]
+      },
+      "optimization_framework": {
+        "continuous_improvement": {
+          "feedback_loops": ["quarterly_stakeholder_surveys", "deal_retrospectives", "competitive_analysis"],
+          "adaptation_triggers": ["performance_threshold_breaches", "market_condition_changes", "stakeholder_feedback_patterns"]
+        }
+      }
+    }
+  },
   "relationshipRules": [
     {
       "id": "rule_1",

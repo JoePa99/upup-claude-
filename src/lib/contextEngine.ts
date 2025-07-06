@@ -314,7 +314,7 @@ Include specific proof points and personalize based on the context provided.`;
   }
 
   /**
-   * Build comprehensive master prompt that incorporates all business intelligence
+   * Build comprehensive master prompt that incorporates all enterprise business intelligence
    */
   private buildMasterPrompt(
     formData: ContextFormData, 
@@ -338,48 +338,86 @@ Include specific proof points and personalize based on the context provided.`;
       })
       .filter(Boolean);
 
-    const masterPrompt = `You are creating content for ${segment.name}s - ${segment.description.toLowerCase()}.
+    // Apply cultural and regional modifiers
+    const culturalContext = this.applyCulturalModifiers(formData, segment);
+    const stakeholderContext = this.getStakeholderContext();
+    const competitiveIntelligence = this.getCompetitiveIntelligence();
+
+    const masterPrompt = `You are creating content for ${segment.name}s representing ${this.ontology.foundation?.companyProfile?.name || 'Plexus Capital'} - ${this.ontology.foundation?.companyProfile?.missionStatement || 'a strategic capital partner'}.
+
+COMPANY CONTEXT & BRAND PERSONALITY:
+Brand Archetype: ${this.ontology.foundation?.brandPersonality?.archetype || 'trusted_advisor_and_catalyst'}
+Brand Promise: ${this.ontology.foundation?.brandPersonality?.brandPromise || 'We deliver certainty in uncertain markets through proven expertise and unwavering partnership'}
+Core Values: ${this.ontology.foundation?.companyProfile?.coreValues?.join(', ') || 'partnership_over_transaction, operational_excellence, long_term_value_creation'}
+
+VALUE PROPOSITION & COMPETITIVE POSITIONING:
+Primary Value Prop: ${this.ontology.foundation?.businessModel?.valueProposition?.primary || 'integrated_capital_platform'}
+Key Differentiators: ${this.ontology.foundation?.businessModel?.valueProposition?.differentiators?.join(', ') || 'speed_of_execution, operational_value_add, flexible_capital_solutions'}
+Competitive Advantages: ${this.ontology.foundation?.businessModel?.valueProposition?.competitiveAdvantages?.join(', ') || 'proprietary_sponsor_network, proven_value_creation_playbook'}
 
 TARGET AUDIENCE PROFILE:
+Segment: ${segment.name} - ${segment.description.toLowerCase()}
 ${journeyStage ? `Current Stage: ${journeyStage.name} - ${journeyStage.description}` : ''}
+Sub-segment Focus: ${this.getSubSegmentContext(formData.segment)}
 
-Demographics:
+Demographics & Firmographics:
 - Age: ${segment.demographics.ageRange}
 - Education: ${segment.demographics.education}
 - Income: ${segment.demographics.income}
 - Company Size: ${segment.demographics.companySize || 'Not specified'}
+- Geographic Distribution: ${this.getGeographicContext(segment)}
 
-KEY AUDIENCE INSIGHTS:
-Primary Pain Points:
+DEEP AUDIENCE PSYCHOLOGY:
+Primary Pain Points (prioritized):
 ${rankedPainPoints.map(pp => `• ${pp}`).join('\n')}
 
-Core Motivations: ${segment.psychographics.primaryMotivations.join(', ')}
-Core Fears: ${segment.psychographics.coreFears.join(', ')}
+Motivational Drivers: ${segment.psychographics.primaryMotivations.join(', ')}
+Core Fears & Anxieties: ${segment.psychographics.coreFears.join(', ')}
 Values Hierarchy: ${segment.psychographics.valuesHierarchy.join(', ')}
-Decision Making: ${segment.psychographics.decisionMaking || 'Not specified'}
+Decision Making Style: ${segment.psychographics.decisionMaking || 'Not specified'}
+${culturalContext}
 
-CONTENT GUIDELINES:
-Tone & Voice: ${primaryVoiceAttr?.name} - ${primaryVoiceAttr?.description}
+STAKEHOLDER ECOSYSTEM AWARENESS:
+${stakeholderContext}
+
+COMMUNICATION STRATEGY:
+Voice & Tone: ${primaryVoiceAttr?.name} (${Math.round((voiceWeights[primaryVoice] || 0) * 100)}%) - ${primaryVoiceAttr?.description}
 Communication Style: ${primaryVoiceAttr?.communicationStyle}
+Emotional Benefits to Deliver: ${this.ontology.foundation?.brandPersonality?.emotionalBenefits?.join(', ') || 'confidence_in_partnership, reduced_execution_anxiety'}
 
-Message Structure:
-- Hook: ${messageFramework.structure.hook}
-- Body: ${messageFramework.structure.body}  
-- Close: ${messageFramework.structure.close}
+Message Architecture:
+- Hook Strategy: ${messageFramework.structure.hook}
+- Body Framework: ${messageFramework.structure.body}  
+- Close Approach: ${messageFramework.structure.close}
 
-Proof Points (in order of priority): ${messageFramework.proofPointPriorities.join(', ')}
+Proof Point Hierarchy: ${messageFramework.proofPointPriorities.join(' > ')}
+Key Phrases to Integrate: ${primaryVoiceAttr?.keyPhrases.join(', ')}
 
-Key Phrases to Use: ${primaryVoiceAttr?.keyPhrases.join(', ')}
+COMMUNICATION GUIDELINES:
+✅ ALWAYS DO: ${primaryVoiceAttr?.do.join(', ')}
+❌ NEVER DO: ${primaryVoiceAttr?.dont.join(', ')}
 
-WHAT TO ALWAYS DO: ${primaryVoiceAttr?.do.join(', ')}
-WHAT TO NEVER DO: ${primaryVoiceAttr?.dont.join(', ')}
-
-CONTEXT:
-Relationship Stage: ${formData.relationshipStage?.replace('_', ' ')}
+SITUATIONAL CONTEXT:
+Relationship Stage: ${formData.relationshipStage?.replace('_', ' ')} 
 Urgency Level: ${formData.urgencyLevel}
-${formData.competitiveContext ? `Competitive Situation: Yes - Emphasize differentiators: ${metadata.competitiveDifferentiation.join(', ')}` : ''}
+Interaction Type: ${formData.interactionType}
+${formData.competitiveContext ? `🏆 COMPETITIVE SITUATION: Active competition detected - Emphasize: ${metadata.competitiveDifferentiation.join(', ')}` : ''}
 
-Now create a ${formData.outputType} that incorporates all these insights to resonate specifically with this ${segment.name} audience. Make it ${formData.urgencyLevel === 'high' ? 'urgent and action-oriented' : formData.urgencyLevel === 'low' ? 'informative and relationship-building' : 'balanced and professional'}.`;
+MARKET INTELLIGENCE:
+${competitiveIntelligence}
+
+VALUE CREATION FRAMEWORK:
+Core Services Alignment: ${this.getCoreServicesAlignment(formData)}
+Success Metrics Focus: ${this.getSuccessMetricsContext()}
+
+TACTICAL EXECUTION:
+Content Type: ${formData.outputType}
+Channel Optimization: ${this.getChannelOptimization(formData)}
+Response Timing: ${this.getOptimalTiming(formData.interactionType || 'email', formData.urgencyLevel)}
+
+Now create a ${formData.outputType} that incorporates all these enterprise intelligence layers to resonate specifically with this ${segment.name} audience. Make it ${formData.urgencyLevel === 'high' ? 'urgent and action-oriented with immediate next steps' : formData.urgencyLevel === 'low' ? 'informative and relationship-building with educational value' : 'balanced and professional with clear value proposition'}.
+
+Apply our ${this.ontology.foundation?.brandPersonality?.archetype || 'trusted advisor'} brand archetype while delivering on our brand promise of ${this.ontology.foundation?.brandPersonality?.brandPromise || 'certainty and expertise'}.`;
 
     return masterPrompt;
   }
@@ -518,6 +556,135 @@ Now create a ${formData.outputType} that incorporates all these insights to reso
     };
 
     return instructions[outputType] || 'Create clear, professional content that addresses the audience\'s needs.';
+  }
+
+  /**
+   * Apply cultural and regional modifiers based on segment geography and industry
+   */
+  private applyCulturalModifiers(formData: ContextFormData, segment: CustomerSegment): string {
+    const culturalModifiers = this.ontology.intelligence?.contextualRulesEngine?.adaptiveMessaging?.cultural_modifiers;
+    if (!culturalModifiers) return '';
+
+    // Get primary geographic region for segment
+    const geography = segment.demographics.geography;
+    if (!geography) return '';
+
+    const primaryRegion = Object.entries(geography).reduce((a, b) => 
+      (geography[a[0]] || '0%').localeCompare(geography[b[0]] || '0%') > 0 ? a : b
+    )[0];
+
+    const regionalProfile = culturalModifiers.regional_differences?.[primaryRegion];
+    if (!regionalProfile) return '';
+
+    return `\nCULTURAL & REGIONAL CONTEXT:
+Regional Communication Style (${primaryRegion}): ${regionalProfile.pace} pace, ${regionalProfile.style} style, ${regionalProfile.relationship} relationship approach`;
+  }
+
+  /**
+   * Get stakeholder ecosystem context for the interaction
+   */
+  private getStakeholderContext(): string {
+    const stakeholderEcosystem = this.ontology.relationships?.stakeholderEcosystem;
+    if (!stakeholderEcosystem) return 'Key stakeholders: Investment decision makers, influencers, and advisors';
+
+    const primaryStakeholders = Object.keys(stakeholderEcosystem.primary || {}).slice(0, 3);
+    const secondaryStakeholders = Object.keys(stakeholderEcosystem.secondary || {}).slice(0, 2);
+
+    return `Key Stakeholder Influences: ${primaryStakeholders.join(', ')} (primary), ${secondaryStakeholders.join(', ')} (secondary)
+Remember: This decision often involves multiple stakeholders with different priorities and concerns`;
+  }
+
+  /**
+   * Get competitive intelligence from market dynamics
+   */
+  private getCompetitiveIntelligence(): string {
+    const marketDynamics = this.ontology.market?.marketDynamics;
+    if (!marketDynamics) return 'Competitive landscape: Multiple alternative solutions exist';
+
+    const threats = marketDynamics.competitiveLandscape?.competitiveThreats?.slice(0, 3).join(', ') || 'pricing pressure, market saturation';
+    const opportunities = marketDynamics.competitiveLandscape?.marketOpportunities?.slice(0, 2).join(', ') || 'market growth, client needs evolution';
+
+    return `Market Threats: ${threats}
+Market Opportunities: ${opportunities}
+Emerging Trends: ${marketDynamics.marketTrends?.emerging?.slice(0, 2).join(', ') || 'digital transformation, ESG focus'}`;
+  }
+
+  /**
+   * Get sub-segment context for more targeted messaging
+   */
+  private getSubSegmentContext(segmentId: string): string {
+    const segmentHierarchy = this.ontology.market?.segmentHierarchy;
+    if (!segmentHierarchy) return 'General segment approach';
+
+    const subSegments = segmentHierarchy.subSegments?.[segmentId];
+    if (!subSegments) return 'Primary segment focus';
+
+    return `Potential sub-segments: ${subSegments.join(', ')} - Consider specific sub-segment needs`;
+  }
+
+  /**
+   * Get geographic context for cultural adaptation
+   */
+  private getGeographicContext(segment: CustomerSegment): string {
+    const geography = segment.demographics.geography;
+    if (!geography) return 'Nationwide distribution';
+
+    const regions = Object.entries(geography)
+      .sort(([,a], [,b]) => (b || '0%').localeCompare(a || '0%'))
+      .slice(0, 3)
+      .map(([region, percentage]) => `${region} (${percentage})`)
+      .join(', ');
+
+    return regions || 'Distributed nationwide';
+  }
+
+  /**
+   * Get core services alignment based on customer needs
+   */
+  private getCoreServicesAlignment(formData: ContextFormData): string {
+    const coreServices = this.ontology.offerings?.coreServices;
+    if (!coreServices) return 'Integrated capital and advisory services';
+
+    const relevantServices = coreServices
+      .filter(service => service.targetSegments.includes(formData.segment))
+      .map(service => service.name)
+      .slice(0, 2);
+
+    return relevantServices.length > 0 ? relevantServices.join(', ') : 'Primary equity partnership services';
+  }
+
+  /**
+   * Get success metrics context for value proposition
+   */
+  private getSuccessMetricsContext(): string {
+    const successFrameworks = this.ontology.offerings?.successFrameworks?.valueCreation;
+    if (!successFrameworks) return 'Revenue growth, operational efficiency, strategic positioning';
+
+    const operational = successFrameworks.operational?.slice(0, 2).join(', ') || 'revenue growth, margin expansion';
+    const strategic = successFrameworks.strategic?.slice(0, 2).join(', ') || 'market positioning, competitive advantage';
+
+    return `Operational: ${operational} | Strategic: ${strategic}`;
+  }
+
+  /**
+   * Get channel optimization recommendations
+   */
+  private getChannelOptimization(formData: ContextFormData): string {
+    const channelEffectiveness = this.ontology.engagement?.channelStrategy?.channelEffectiveness;
+    if (!channelEffectiveness) return 'Multi-channel approach with personalized touch';
+
+    const segmentChannels = channelEffectiveness[formData.segment];
+    const journeyStageChannels = segmentChannels?.[formData.journeyStage];
+    
+    if (!journeyStageChannels) return 'Personalized outreach approach';
+
+    const topChannels = Object.entries(journeyStageChannels)
+      .sort(([,a], [,b]) => b - a)
+      .slice(0, 2)
+      .map(([channel, effectiveness]) => `${channel} (${Math.round(effectiveness * 100)}% effective)`)
+      .join(', ');
+
+    return topChannels || 'Direct, personalized communication';
   }
 }
 
