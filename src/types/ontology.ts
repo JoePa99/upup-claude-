@@ -24,7 +24,7 @@ export interface Demographics {
 }
 
 export interface GeographicDistribution {
-  [region: string]: string; // percentage as string like "30%"
+  [region: string]: string | undefined; // percentage as string like "30%" or undefined
 }
 
 export interface Psychographics {
