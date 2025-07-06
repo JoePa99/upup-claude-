@@ -1,8 +1,7 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Button } from './ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Label } from './ui/label';
 import { SmartSegmentPicker } from './SmartSegmentPicker';
@@ -19,14 +18,7 @@ import {
 import { contextEngine } from '@/lib/contextEngine';
 import ontologyData from '@/data/ontology.json';
 import { cn } from '@/utils/cn';
-import { ArrowRight, ArrowLeft, Zap, Users, Target } from 'lucide-react';
-
-interface FormStep {
-  id: string;
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-}
+import { Zap, Users, Target, Building2 } from 'lucide-react';
 
 interface ContextBuilderFormProps {
   className?: string;
@@ -42,34 +34,11 @@ const INITIAL_FORM_DATA: ContextFormData = {
   outputType: 'email'
 };
 
-const FORM_STEPS: FormStep[] = [
-  {
-    id: 'segment',
-    title: 'Customer Segment',
-    description: 'Identify your target audience',
-    icon: <Users className="h-5 w-5" />
-  },
-  {
-    id: 'pain_points',
-    title: 'Pain Points',
-    description: 'Prioritize customer challenges',
-    icon: <Target className="h-5 w-5" />
-  },
-  {
-    id: 'context',
-    title: 'Context & Output',
-    description: 'Situational details and output type',
-    icon: <Zap className="h-5 w-5" />
-  }
-];
-
 export default function ContextBuilderForm({ className }: ContextBuilderFormProps) {
-  const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState<ContextFormData>(INITIAL_FORM_DATA);
   const [generatedContext, setGeneratedContext] = useState<GeneratedContext | null>(null);
   const [qualityMetrics, setQualityMetrics] = useState<QualityMetrics | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
-  const [showPreview, setShowPreview] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   // Generate context whenever form data changes (with debounce)
@@ -115,269 +84,245 @@ export default function ContextBuilderForm({ className }: ContextBuilderFormProp
     updateFormData({ painPointPriorities: painPoints });
   };
 
-  const nextStep = () => {
-    if (currentStep < FORM_STEPS.length - 1) {
-      setCurrentStep(currentStep + 1);
-    } else {
-      setShowPreview(true);
-    }
-  };
-
-  const prevStep = () => {
-    if (showPreview) {
-      setShowPreview(false);
-    } else if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
-    }
-  };
-
-  const canProceed = useMemo(() => {
-    switch (currentStep) {
-      case 0: // Segment selection
-        return Boolean(formData.segment);
-      case 1: // Pain points
-        return formData.painPointPriorities.length > 0;
-      case 2: // Context
-        return Boolean(formData.journeyStage && formData.outputType);
-      default:
-        return false;
-    }
-  }, [currentStep, formData]);
-
-  const getStepProgress = () => {
-    return showPreview ? 100 : ((currentStep + 1) / FORM_STEPS.length) * 100;
-  };
-
-  if (showPreview) {
-    return (
-      <div className={cn("max-w-6xl mx-auto p-6", className)}>
-        <div className="mb-6">
-          <Button
-            variant="outline"
-            onClick={prevStep}
-            className="mb-4"
-          >
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Form
-          </Button>
-          <h1 className="text-3xl font-bold mb-2">AI Context Preview</h1>
-          <p className="text-gray-600">
-            Review your generated context and quality metrics
-          </p>
-        </div>
-
-        <ContextPreview
-          generatedContext={generatedContext}
-          qualityMetrics={qualityMetrics}
-          isLoading={isGenerating}
-        />
-      </div>
-    );
-  }
-
-  const currentStepData = FORM_STEPS[currentStep];
-
   return (
-    <div className={cn("max-w-6xl mx-auto", className)}>
-      <div className="mb-8">
-        {error && (
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
-            <p className="text-red-800 text-sm">{error}</p>
-          </div>
-        )}
-
-        {/* Progress Bar */}
-        <div className="w-full bg-gray-200 rounded-full h-2 mb-6">
-          <div 
-            className="bg-blue-600 h-2 rounded-full transition-all duration-300"
-            style={{ width: `${getStepProgress()}%` }}
-          />
+    <div className={cn("max-w-7xl mx-auto", className)}>
+      {error && (
+        <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+          <p className="text-red-800 text-sm">{error}</p>
         </div>
+      )}
 
-        {/* Step Indicators */}
-        <div className="flex justify-between mb-8">
-          {FORM_STEPS.map((step, index) => (
-            <div 
-              key={step.id}
-              className={cn(
-                "flex flex-col items-center cursor-pointer transition-colors",
-                index <= currentStep ? "text-blue-600" : "text-gray-400"
-              )}
-              onClick={() => index <= currentStep && setCurrentStep(index)}
-            >
-              <div className={cn(
-                "w-10 h-10 rounded-full flex items-center justify-center mb-2 transition-colors",
-                index <= currentStep 
-                  ? "bg-blue-600 text-white" 
-                  : "bg-gray-200 text-gray-400"
-              )}>
-                {step.icon}
-              </div>
-              <span className="text-sm font-medium">{step.title}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="grid gap-8 lg:grid-cols-3">
-        {/* Main Form */}
-        <div className="lg:col-span-2">
+      {/* 3-Column Dashboard Layout */}
+      <div className="grid gap-6 lg:grid-cols-[300px_1fr_320px] min-h-[800px]">
+        {/* Left Column - Form Controls */}
+        <div className="space-y-6">
+          {/* Customer Segment */}
           <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3">
-                {currentStepData.icon}
-                {currentStepData.title}
+            <CardHeader className="pb-3">
+              <CardTitle className="text-lg flex items-center gap-2">
+                <Users className="h-5 w-5" />
+                Customer Segment
               </CardTitle>
-              <p className="text-sm text-gray-600">{currentStepData.description}</p>
             </CardHeader>
             <CardContent>
-              {/* Step Content */}
-              {currentStep === 0 && (
-                <SmartSegmentPicker
-                  segments={ontologyData.customerSegments as CustomerSegment[]}
-                  selectedSegment={formData.segment}
-                  onSegmentChange={handleSegmentChange}
-                />
-              )}
+              <div>
+                <Label htmlFor="segment">Select Segment</Label>
+                <Select value={formData.segment} onValueChange={handleSegmentChange}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Choose customer segment" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {(ontologyData.customerSegments as CustomerSegment[]).map((segment) => (
+                      <SelectItem key={segment.id} value={segment.id}>
+                        <div className="flex items-center gap-2">
+                          {segment.id === 'independent_sponsor' && <Users className="h-4 w-4" />}
+                          {segment.id === 'legacy_founder' && <Building2 className="h-4 w-4" />}
+                          <span>{segment.name}</span>
+                        </div>
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                {formData.segment && (
+                  <p className="text-xs text-gray-600 mt-2">
+                    {(ontologyData.customerSegments as CustomerSegment[])
+                      .find(s => s.id === formData.segment)?.description}
+                  </p>
+                )}
+              </div>
+            </CardContent>
+          </Card>
 
-              {currentStep === 1 && formData.segment && (
-                <DragDropPainPointRanker
-                  painPoints={ontologyData.painPoints as PainPoint[]}
-                  selectedPainPoints={formData.painPointPriorities}
-                  onPainPointsChange={handlePainPointsChange}
-                  segmentId={formData.segment}
-                />
-              )}
+          {/* Pain Points */}
+          {formData.segment && (
+            <Card>
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg flex items-center gap-2">
+                  <Target className="h-5 w-5" />
+                  Pain Points
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  {(ontologyData.painPoints as PainPoint[]).map((painPoint) => {
+                    const existingPriority = formData.painPointPriorities.find(p => p.painPointId === painPoint.id);
+                    const isSelected = !!existingPriority;
+                    
+                    const getSeverityColor = (severity: string) => {
+                      switch (severity) {
+                        case 'extreme': return 'bg-red-100 text-red-700 text-xs';
+                        case 'high': return 'bg-orange-100 text-orange-700 text-xs';
+                        case 'medium': return 'bg-yellow-100 text-yellow-700 text-xs';
+                        case 'low': return 'bg-green-100 text-green-700 text-xs';
+                        default: return 'bg-gray-100 text-gray-700 text-xs';
+                      }
+                    };
 
-              {currentStep === 2 && (
-                <div className="space-y-6">
-                  <div className="grid gap-4 md:grid-cols-2">
-                    <div>
-                      <Label htmlFor="journey-stage">Journey Stage</Label>
-                      <Select 
-                        value={formData.journeyStage} 
-                        onValueChange={(value) => updateFormData({ journeyStage: value })}
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select journey stage" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {ontologyData.journeyStages.map((stage) => (
-                            <SelectItem key={stage.id} value={stage.id}>
-                              {stage.name}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
+                    const handlePainPointToggle = (painPointId: string, checked: boolean) => {
+                      if (checked) {
+                        const newPriority: PainPointPriority = {
+                          painPointId,
+                          weight: 1.0,
+                          priority: formData.painPointPriorities.length + 1
+                        };
+                        handlePainPointsChange([...formData.painPointPriorities, newPriority]);
+                      } else {
+                        handlePainPointsChange(formData.painPointPriorities.filter(p => p.painPointId !== painPointId));
+                      }
+                    };
 
-                    <div>
-                      <Label htmlFor="urgency">Urgency Level</Label>
-                      <Select 
-                        value={formData.urgencyLevel} 
-                        onValueChange={(value: string) => updateFormData({ urgencyLevel: value as 'low' | 'medium' | 'high' })}
-                      >
-                        <SelectTrigger>
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="low">Low</SelectItem>
-                          <SelectItem value="medium">Medium</SelectItem>
-                          <SelectItem value="high">High</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
+                    const handlePriorityChange = (painPointId: string, priority: number) => {
+                      const updated = formData.painPointPriorities.map(p => 
+                        p.painPointId === painPointId ? { ...p, priority } : p
+                      );
+                      handlePainPointsChange(updated);
+                    };
 
-                    <div>
-                      <Label htmlFor="interaction-type">Interaction Type</Label>
-                      <Select 
-                        value={formData.interactionType} 
-                        onValueChange={(value: string) => updateFormData({ interactionType: value as 'email' | 'presentation' | 'proposal' | 'meeting' | 'social' })}
-                      >
-                        <SelectTrigger>
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="email">Email</SelectItem>
-                          <SelectItem value="presentation">Presentation</SelectItem>
-                          <SelectItem value="proposal">Proposal</SelectItem>
-                          <SelectItem value="meeting">Meeting</SelectItem>
-                          <SelectItem value="social">Social Media</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="output-type">Output Type</Label>
-                      <Select 
-                        value={formData.outputType} 
-                        onValueChange={(value: string) => updateFormData({ outputType: value as 'email' | 'presentation' | 'proposal' | 'strategy' | 'content' })}
-                      >
-                        <SelectTrigger>
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="email">Email</SelectItem>
-                          <SelectItem value="presentation">Presentation</SelectItem>
-                          <SelectItem value="proposal">Proposal</SelectItem>
-                          <SelectItem value="strategy">Strategy</SelectItem>
-                          <SelectItem value="content">Content</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-
-                  <div>
-                    <Label htmlFor="relationship-stage">Relationship Stage</Label>
-                    <Select 
-                      value={formData.relationshipStage} 
-                      onValueChange={(value: string) => updateFormData({ relationshipStage: value as 'first_interaction' | 'established' | 'partnership' })}
-                    >
-                      <SelectTrigger>
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="first_interaction">First Interaction</SelectItem>
-                        <SelectItem value="established">Established Relationship</SelectItem>
-                        <SelectItem value="partnership">Active Partnership</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
+                    return (
+                      <div key={painPoint.id} className="flex items-center gap-3 p-3 border rounded-lg">
+                        <input
+                          type="checkbox"
+                          checked={isSelected}
+                          onChange={(e) => handlePainPointToggle(painPoint.id, e.target.checked)}
+                          className="w-4 h-4 text-blue-600"
+                        />
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="font-medium text-sm">{painPoint.name}</span>
+                            <Badge className={getSeverityColor(painPoint.severity)}>
+                              {painPoint.severity}
+                            </Badge>
+                          </div>
+                          <p className="text-xs text-gray-600 line-clamp-2">{painPoint.description}</p>
+                        </div>
+                        {isSelected && (
+                          <div className="flex items-center gap-2">
+                            <Label className="text-xs">Priority:</Label>
+                            <input
+                              type="number"
+                              min="1"
+                              max="10"
+                              value={existingPriority?.priority || 1}
+                              onChange={(e) => handlePriorityChange(painPoint.id, parseInt(e.target.value) || 1)}
+                              className="w-16 px-2 py-1 text-sm border rounded"
+                            />
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
-              )}
+              </CardContent>
+            </Card>
+          )}
 
-              {/* Navigation */}
-              <div className="flex justify-between mt-8">
-                <Button
-                  variant="outline"
-                  onClick={prevStep}
-                  disabled={currentStep === 0}
+          {/* Context & Output */}
+          <Card>
+            <CardHeader className="pb-3">
+              <CardTitle className="text-lg flex items-center gap-2">
+                <Zap className="h-5 w-5" />
+                Context & Output
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div>
+                <Label htmlFor="journey-stage">Journey Stage</Label>
+                <Select 
+                  value={formData.journeyStage} 
+                  onValueChange={(value) => updateFormData({ journeyStage: value })}
                 >
-                  <ArrowLeft className="h-4 w-4 mr-2" />
-                  Previous
-                </Button>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select journey stage" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {ontologyData.journeyStages.map((stage) => (
+                      <SelectItem key={stage.id} value={stage.id}>
+                        {stage.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
 
-                <Button
-                  onClick={nextStep}
-                  disabled={!canProceed}
+              <div className="grid gap-4 grid-cols-2">
+                <div>
+                  <Label htmlFor="urgency">Urgency</Label>
+                  <Select 
+                    value={formData.urgencyLevel} 
+                    onValueChange={(value: string) => updateFormData({ urgencyLevel: value as 'low' | 'medium' | 'high' })}
+                  >
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="low">Low</SelectItem>
+                      <SelectItem value="medium">Medium</SelectItem>
+                      <SelectItem value="high">High</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div>
+                  <Label htmlFor="output-type">Output</Label>
+                  <Select 
+                    value={formData.outputType} 
+                    onValueChange={(value: string) => updateFormData({ outputType: value as 'email' | 'presentation' | 'proposal' | 'strategy' | 'content' })}
+                  >
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="email">Email</SelectItem>
+                      <SelectItem value="presentation">Presentation</SelectItem>
+                      <SelectItem value="proposal">Proposal</SelectItem>
+                      <SelectItem value="strategy">Strategy</SelectItem>
+                      <SelectItem value="content">Content</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              <div>
+                <Label htmlFor="relationship-stage">Relationship Stage</Label>
+                <Select 
+                  value={formData.relationshipStage} 
+                  onValueChange={(value: string) => updateFormData({ relationshipStage: value as 'first_interaction' | 'established' | 'partnership' })}
                 >
-                  {currentStep === FORM_STEPS.length - 1 ? 'Preview Context' : 'Next'}
-                  <ArrowRight className="h-4 w-4 ml-2" />
-                </Button>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="first_interaction">First Interaction</SelectItem>
+                    <SelectItem value="established">Established Relationship</SelectItem>
+                    <SelectItem value="partnership">Active Partnership</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
             </CardContent>
           </Card>
         </div>
 
-        {/* Live Preview Sidebar */}
-        <div className="lg:col-span-1">
-          <div className="sticky top-6">
+        {/* Center Column - Live Preview */}
+        <div>
+          <div className="sticky top-6 h-fit">
             <ContextPreview
               generatedContext={generatedContext}
               qualityMetrics={qualityMetrics}
               isLoading={isGenerating}
             />
           </div>
+        </div>
+
+        {/* Right Column - Future: Quality Metrics & Export */}
+        <div className="space-y-6">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">Quick Actions</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-gray-600">Export and template features coming soon...</p>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>
