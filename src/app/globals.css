@@ -58,9 +58,19 @@
 
 /* Custom slider styles */
 .slider::-webkit-slider-thumb {
-  @apply appearance-none w-5 h-5 bg-blue-600 rounded-full cursor-pointer;
+  appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: #2563eb;
+  border-radius: 9999px;
+  cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-  @apply w-5 h-5 bg-blue-600 rounded-full cursor-pointer border-0;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: #2563eb;
+  border-radius: 9999px;
+  cursor: pointer;
+  border: 0;
 }
