@@ -313,14 +313,118 @@ export default function ContextBuilderForm({ className }: ContextBuilderFormProp
           </div>
         </div>
 
-        {/* Right Column - Future: Quality Metrics & Export */}
+        {/* Right Column - Templates & Quick Actions */}
         <div className="space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle className="text-lg">Quick Actions</CardTitle>
+              <CardTitle className="text-lg">Quick Templates</CardTitle>
             </CardHeader>
-            <CardContent>
-              <p className="text-sm text-gray-600">Export and template features coming soon...</p>
+            <CardContent className="space-y-2">
+              <Button
+                variant="outline"
+                size="sm"
+                className="w-full justify-start text-left"
+                onClick={() => {
+                  setFormData({
+                    segment: 'independent_sponsor',
+                    journeyStage: 'prospecting',
+                    painPointPriorities: [
+                      { painPointId: 'capital_raising_friction', weight: 1.0, priority: 1 },
+                      { painPointId: 'no_margin_for_error', weight: 0.8, priority: 2 }
+                    ],
+                    urgencyLevel: 'high',
+                    interactionType: 'email',
+                    relationshipStage: 'first_interaction',
+                    outputType: 'email'
+                  });
+                }}
+              >
+                🔥 Cold Outreach - Independent Sponsor
+              </Button>
+              
+              <Button
+                variant="outline"
+                size="sm"
+                className="w-full justify-start text-left"
+                onClick={() => {
+                  setFormData({
+                    segment: 'legacy_founder',
+                    journeyStage: 'evaluation',
+                    painPointPriorities: [
+                      { painPointId: 'legacy_preservation', weight: 1.0, priority: 1 },
+                      { painPointId: 'succession_planning', weight: 0.9, priority: 2 }
+                    ],
+                    urgencyLevel: 'medium',
+                    interactionType: 'email',
+                    relationshipStage: 'established',
+                    outputType: 'proposal'
+                  });
+                }}
+              >
+                🏢 Legacy Exit Proposal
+              </Button>
+              
+              <Button
+                variant="outline"
+                size="sm"
+                className="w-full justify-start text-left"
+                onClick={() => {
+                  setFormData({
+                    segment: 'independent_sponsor',
+                    journeyStage: 'due_diligence',
+                    painPointPriorities: [
+                      { painPointId: 'bandwidth_limitations', weight: 1.0, priority: 1 },
+                      { painPointId: 'capital_raising_friction', weight: 0.7, priority: 2 }
+                    ],
+                    urgencyLevel: 'high',
+                    interactionType: 'email',
+                    relationshipStage: 'partnership',
+                    outputType: 'strategy'
+                  });
+                }}
+              >
+                ⚡ Deal Support - Active Partnership
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">Export Options</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-2">
+              {generatedContext && (
+                <>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full justify-start"
+                    onClick={async () => {
+                      const allPrompts = `SYSTEM PROMPT:\n${generatedContext.systemPrompt}\n\nCONTEXT PROMPT:\n${generatedContext.contextPrompt}\n\nTASK PROMPT:\n${generatedContext.taskPrompt}`;
+                      await navigator.clipboard.writeText(allPrompts);
+                    }}
+                  >
+                    📋 Copy All Prompts
+                  </Button>
+                  
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full justify-start"
+                    onClick={() => {
+                      const dataStr = JSON.stringify(formData, null, 2);
+                      const dataBlob = new Blob([dataStr], { type: 'application/json' });
+                      const url = URL.createObjectURL(dataBlob);
+                      const link = document.createElement('a');
+                      link.href = url;
+                      link.download = 'ai-context-config.json';
+                      link.click();
+                    }}
+                  >
+                    💾 Download Config
+                  </Button>
+                </>
+              )}
             </CardContent>
           </Card>
         </div>
