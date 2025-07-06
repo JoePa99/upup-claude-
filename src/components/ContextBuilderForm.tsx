@@ -24,7 +24,7 @@ interface FormStep {
   title: string;
   description: string;
   icon: React.ReactNode;
-  component: React.ComponentType<Record<string, unknown>>;
+  component?: React.ComponentType;
 }
 
 interface ContextBuilderFormProps {
@@ -274,7 +274,7 @@ export default function ContextBuilderForm({ className }: ContextBuilderFormProp
                       <Label htmlFor="urgency">Urgency Level</Label>
                       <Select 
                         value={formData.urgencyLevel} 
-                        onValueChange={(value: 'low' | 'medium' | 'high') => updateFormData({ urgencyLevel: value })}
+                        onValueChange={(value: string) => updateFormData({ urgencyLevel: value as 'low' | 'medium' | 'high' })}
                       >
                         <SelectTrigger>
                           <SelectValue />
@@ -291,7 +291,7 @@ export default function ContextBuilderForm({ className }: ContextBuilderFormProp
                       <Label htmlFor="interaction-type">Interaction Type</Label>
                       <Select 
                         value={formData.interactionType} 
-                        onValueChange={(value: 'email' | 'presentation' | 'proposal' | 'meeting' | 'social') => updateFormData({ interactionType: value })}
+                        onValueChange={(value: string) => updateFormData({ interactionType: value as 'email' | 'presentation' | 'proposal' | 'meeting' | 'social' })}
                       >
                         <SelectTrigger>
                           <SelectValue />
@@ -310,7 +310,7 @@ export default function ContextBuilderForm({ className }: ContextBuilderFormProp
                       <Label htmlFor="output-type">Output Type</Label>
                       <Select 
                         value={formData.outputType} 
-                        onValueChange={(value: 'email' | 'presentation' | 'proposal' | 'strategy' | 'content') => updateFormData({ outputType: value })}
+                        onValueChange={(value: string) => updateFormData({ outputType: value as 'email' | 'presentation' | 'proposal' | 'strategy' | 'content' })}
                       >
                         <SelectTrigger>
                           <SelectValue />
@@ -330,7 +330,7 @@ export default function ContextBuilderForm({ className }: ContextBuilderFormProp
                     <Label htmlFor="relationship-stage">Relationship Stage</Label>
                     <Select 
                       value={formData.relationshipStage} 
-                      onValueChange={(value: 'first_interaction' | 'established' | 'partnership') => updateFormData({ relationshipStage: value })}
+                      onValueChange={(value: string) => updateFormData({ relationshipStage: value as 'first_interaction' | 'established' | 'partnership' })}
                     >
                       <SelectTrigger>
                         <SelectValue />

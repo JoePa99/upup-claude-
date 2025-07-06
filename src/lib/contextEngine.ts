@@ -6,9 +6,9 @@ import {
   OptimizationSuggestion,
   OntologyData,
   CustomerSegment,
-  PainPoint,
-  RelationshipRule,
-  ChannelRecommendation
+  ChannelRecommendation,
+  MessageFramework,
+  RuleCondition
 } from '@/types/ontology';
 import ontologyData from '@/data/ontology.json';
 
@@ -36,7 +36,7 @@ export class ContextEngine {
     const messageFramework = this.selectMessageFramework(formData, voiceWeights);
 
     // Step 4: Generate channel recommendations
-    const channelRecommendations = this.generateChannelRecommendations(formData, segment);
+    const channelRecommendations = this.generateChannelRecommendations(formData);
 
     // Step 5: Calculate quality metrics
     const qualityMetrics = this.calculateQualityMetrics(formData);
@@ -155,7 +155,7 @@ export class ContextEngine {
   /**
    * Generate channel recommendations based on segment preferences and journey stage
    */
-  private generateChannelRecommendations(formData: ContextFormData, segment: CustomerSegment): ChannelRecommendation[] {
+  private generateChannelRecommendations(formData: ContextFormData): ChannelRecommendation[] {
     const journeyStage = this.ontology.journeyStages.find(js => js.id === formData.journeyStage);
     const urgencyMultiplier = formData.urgencyLevel === 'high' ? 1.2 : formData.urgencyLevel === 'low' ? 0.8 : 1.0;
 
@@ -302,7 +302,7 @@ Use phrases like: ${primaryVoiceAttr?.keyPhrases.join(', ')}`;
   /**
    * Build task-specific prompt with output requirements
    */
-  private buildTaskPrompt(formData: ContextFormData, messageFramework: any): string {
+  private buildTaskPrompt(formData: ContextFormData, messageFramework: MessageFramework): string {
     const outputInstructions = this.getOutputInstructions(formData.outputType);
     const lengthGuidance = formData.lengthRequirement ? `Keep to ${formData.lengthRequirement}.` : '';
 
@@ -335,7 +335,7 @@ Include specific proof points and personalize based on the context provided.`;
     }
   }
 
-  private matchesRuleCondition(condition: any, formData: ContextFormData): boolean {
+  private matchesRuleCondition(condition: RuleCondition, formData: ContextFormData): boolean {
     if (condition.segment && condition.segment !== formData.segment) return false;
     if (condition.painPoint && !formData.painPointPriorities?.some(pp => pp.painPointId === condition.painPoint)) return false;
     if (condition.journeyStage && condition.journeyStage !== formData.journeyStage) return false;
@@ -348,12 +348,12 @@ Include specific proof points and personalize based on the context provided.`;
     const optionalFields = ['competitiveContext', 'companyProfile', 'strategicObjectives'];
     
     const requiredComplete = requiredFields.filter(field => {
-      const value = (formData as any)[field];
+      const value = formData[field as keyof ContextFormData];
       return value && (Array.isArray(value) ? value.length > 0 : true);
     }).length;
 
     const optionalComplete = optionalFields.filter(field => {
-      const value = (formData as any)[field];
+      const value = formData[field as keyof ContextFormData];
       return value && (Array.isArray(value) ? value.length > 0 : true);
     }).length;
 
@@ -428,7 +428,7 @@ Include specific proof points and personalize based on the context provided.`;
     return timingMap[channel]?.[urgencyLevel] || 'within_24_hours';
   }
 
-  private getOptimalFormat(channel: string, outputType: string): string {
+  private getOptimalFormat(channel: string, _outputType: string): string {
     if (channel === 'email') return 'personalized_email';
     if (channel === 'phone') return 'conversation_guide';
     if (channel === 'linkedin') return 'professional_message';

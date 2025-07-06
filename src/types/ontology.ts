@@ -297,7 +297,7 @@ export interface RuleCondition {
   painPoint?: string;
   journeyStage?: string;
   competitiveContext?: string;
-  [key: string]: any;
+  [key: string]: string | boolean | number | string[] | undefined;
 }
 
 export interface RuleEffect {
@@ -305,5 +305,5 @@ export interface RuleEffect {
   messageEmphasis?: string[];
   channelPreference?: string[];
   proofPointPriority?: string[];
-  [key: string]: any;
+  [key: string]: string | boolean | number | string[] | undefined;
 }
