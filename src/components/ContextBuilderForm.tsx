@@ -2,10 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Button } from './ui/button';
+import { Badge } from './ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Label } from './ui/label';
-import { SmartSegmentPicker } from './SmartSegmentPicker';
-import { DragDropPainPointRanker } from './DragDropPainPointRanker';
 import { ContextPreview } from './ContextPreview';
 import { 
   ContextFormData, 
