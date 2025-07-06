@@ -172,7 +172,7 @@ export class ContextEngine {
         channel,
         effectiveness,
         timing: this.getOptimalTiming(channel, formData.urgencyLevel),
-        format: this.getOptimalFormat(channel, formData.outputType),
+        format: this.getOptimalFormat(channel),
         reasoning: this.getChannelReasoning(channel, formData.journeyStage, formData.urgencyLevel)
       });
     });
@@ -428,7 +428,7 @@ Include specific proof points and personalize based on the context provided.`;
     return timingMap[channel]?.[urgencyLevel] || 'within_24_hours';
   }
 
-  private getOptimalFormat(channel: string, _outputType: string): string {
+  private getOptimalFormat(channel: string): string {
     if (channel === 'email') return 'personalized_email';
     if (channel === 'phone') return 'conversation_guide';
     if (channel === 'linkedin') return 'professional_message';
