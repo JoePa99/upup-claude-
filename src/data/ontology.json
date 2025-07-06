@@ -140,19 +140,122 @@
   },
   "customerSegments": [
     {
-      "id": "independent_sponsor",
-      "name": "Independent Sponsor",
-      "description": "Individual or small team acquiring companies without permanent capital",
+      "id": "serial_entrepreneur",
+      "name": "Serial Entrepreneur",
+      "description": "Experienced independent sponsor with multiple deal track record",
+      "parentSegment": "independent_sponsor",
+      "brandPersonalityAlignment": {
+        "primaryArchetype": "trusted_advisor_and_catalyst",
+        "resonantValues": ["partnership_over_transaction", "operational_excellence"],
+        "communicationStyle": "direct_transparent_with_speed"
+      },
       "demographics": {
-        "ageRange": "30s-40s",
-        "averageAge": 38,
-        "genderSplit": "85% male, 15% female",
-        "education": "95% bachelor's, 70% MBA",
-        "income": "$200k+ variable",
-        "companySize": "1-3 people",
+        "ageRange": "35-50",
+        "averageAge": 42,
+        "genderSplit": "80% male, 20% female",
+        "education": "98% bachelor's, 85% MBA",
+        "income": "$500k+ variable",
+        "companySize": "2-5 people",
         "geography": {
-          "northeast": "30%",
-          "southeast": "20%",
+          "northeast": "35%",
+          "texas": "20%",
+          "west_coast": "20%",
+          "southeast": "15%",
+          "midwest": "10%"
+        }
+      },
+      "psychographics": {
+        "primaryMotivations": [
+          "portfolio_expansion",
+          "reputation_building",
+          "wealth_maximization",
+          "industry_influence"
+        ],
+        "coreFears": [
+          "reputation_damage_from_failed_deal",
+          "capital_partner_reliability",
+          "market_timing_risk",
+          "competitive_disadvantage"
+        ],
+        "valuesHierarchy": [
+          "speed_and_execution",
+          "proven_track_record",
+          "network_leverage",
+          "strategic_partnership"
+        ],
+        "workStyle": "high_velocity_networked",
+        "decisionMaking": "pattern_recognition_speed_focused",
+        "networking": "extensive_professional_networks",
+        "behavioralTriggers": [
+          "quick_response_to_outreach",
+          "references_past_deals",
+          "focuses_on_execution_speed"
+        ]
+      },
+      "painPoints": [
+        "capital_raising_friction",
+        "bandwidth_limitations",
+        "credibility_establishment",
+        "competitive_deal_flow"
+      ],
+      "journeyStages": [
+        "awareness",
+        "evaluation",
+        "partnership",
+        "portfolio_growth"
+      ],
+      "voicePreferences": [
+        {
+          "primary": "experienced",
+          "secondary": "trustworthy",
+          "situationalModifiers": [
+            {
+              "condition": "competitive_situation",
+              "voiceAdjustment": "+trustworthy_0.15",
+              "weight": 0.15,
+              "reasoning": "established_sponsors_value_certainty_over_innovation"
+            },
+            {
+              "condition": "portfolio_expansion",
+              "voiceAdjustment": "+empowering_0.1",
+              "weight": 0.1,
+              "reasoning": "growth_focused_messaging_resonates_with_ambitious_sponsors"
+            }
+          ]
+        }
+      ],
+      "decisionFactors": [
+        "execution_speed",
+        "partnership_quality",
+        "terms_competitiveness",
+        "network_value_add"
+      ],
+      "communicationPreferences": [
+        "concise_data_driven",
+        "proof_over_promises",
+        "peer_level_communication"
+      ]
+    },
+    {
+      "id": "first_time_sponsor",
+      "name": "First-Time Sponsor",
+      "description": "New independent sponsor executing first or second deal",
+      "parentSegment": "independent_sponsor",
+      "brandPersonalityAlignment": {
+        "primaryArchetype": "trusted_advisor_and_catalyst",
+        "resonantValues": ["partnership_over_transaction", "entrepreneurial_spirit"],
+        "communicationStyle": "empathetic_supportive_with_expertise"
+      },
+      "demographics": {
+        "ageRange": "28-40",
+        "averageAge": 34,
+        "genderSplit": "85% male, 15% female",
+        "education": "90% bachelor's, 60% MBA",
+        "income": "$150k-$300k variable",
+        "companySize": "1-2 people",
+        "geography": {
+          "northeast": "25%",
+          "southeast": "25%",
           "midwest": "20%",
           "texas": "15%",
           "west_coast": "15%"
@@ -162,117 +265,236 @@
         "primaryMotivations": [
           "deal_execution_success",
           "credibility_establishment",
-          "personal_autonomy",
-          "wealth_creation"
+          "learning_and_growth",
+          "financial_security"
         ],
         "coreFears": [
-          "deal_failure_zero_return",
-          "capital_partner_unreliability",
-          "reputation_damage",
-          "financial_uncertainty"
+          "deal_failure_career_impact",
+          "inexperience_exposure",
+          "capital_partner_exploitation",
+          "reputation_damage"
         ],
         "valuesHierarchy": [
-          "speed_and_certainty",
+          "mentorship_and_guidance",
           "partnership_over_transaction",
-          "flexibility_and_control",
+          "learning_opportunities",
           "long_term_relationship_building"
         ],
-        "workStyle": "always_on_high_travel",
-        "decisionMaking": "roi_driven_speed_focused",
-        "networking": "92% rely on personal networks"
+        "workStyle": "eager_to_learn_high_effort",
+        "decisionMaking": "consensus_seeking_validation_focused",
+        "networking": "building_professional_networks",
+        "behavioralTriggers": [
+          "asks_detailed_questions",
+          "seeks_reference_validation",
+          "emphasizes_learning_support"
+        ]
       },
       "painPoints": [
         "capital_raising_friction",
         "no_margin_for_error",
-        "bandwidth_limitations",
-        "credibility_establishment"
-      ],
-      "journeyStages": [
-        "awareness",
-        "evaluation",
-        "partnership"
-      ],
-      "voicePreferences": [
-        {
-          "primary": "trustworthy",
-          "secondary": "experienced",
-          "situationalModifiers": [
-            {
-              "condition": "first_interaction",
-              "voiceAdjustment": "+empathetic_0.2",
-              "weight": 0.2,
-              "reasoning": "need_to_establish_rapport_before_credibility"
-            },
-            {
-              "condition": "competitive_situation",
-              "voiceAdjustment": "+trustworthy_0.1",
-              "weight": 0.1,
-              "reasoning": "differentiation_requires_confidence"
-            }
-          ]
-        }
-      ],
-      "decisionFactors": [
-        "speed_of_execution",
-        "certainty_of_closing",
-        "partnership_quality",
-        "terms_competitiveness"
-      ],
-      "communicationPreferences": [
-        "direct_efficient_communication",
-        "proof_over_promises",
-        "personal_over_institutional"
-      ]
-    },
-    {
-      "id": "legacy_founder",
-      "name": "Legacy Founder",
-      "description": "Baby boomer business owner planning succession or exit",
-      "demographics": {
-        "ageRange": "55-75",
-        "averageAge": 62,
-        "genderSplit": "70% male, 30% female",
-        "education": "80% bachelor's, 40% advanced degree",
-        "income": "varies by business size",
-        "companySize": "$20M-$100M revenue",
-        "geography": {
-          "distributed": "nationwide with regional concentrations"
-        }
-      },
-      "psychographics": {
-        "primaryMotivations": [
-          "legacy_preservation",
-          "employee_protection",
-          "retirement_planning",
-          "smooth_succession"
-        ],
-        "coreFears": [
-          "wrong_buyer_destroys_culture",
-          "employee_layoffs_post_sale",
-          "legacy_destruction",
-          "inadequate_retirement_funds"
-        ],
-        "valuesHierarchy": [
-          "values_and_culture_fit",
-          "employee_welfare",
-          "company_continuity",
-          "financial_security"
-        ],
-        "workStyle": "relationship_focused_deliberate",
-        "decisionMaking": "consensus_building_cautious",
-        "networking": "industry_associations_and_advisors"
-      },
-      "painPoints": [
-        "legacy_preservation",
-        "cultural_fit_concerns",
-        "employee_security",
-        "succession_complexity"
+        "credibility_establishment",
+        "knowledge_gaps"
       ],
       "journeyStages": [
         "awareness",
         "evaluation",
         "partnership",
-        "succession"
+        "mentorship"
+      ],
+      "voicePreferences": [
+        {
+          "primary": "empathetic",
+          "secondary": "experienced",
+          "situationalModifiers": [
+            {
+              "condition": "first_interaction",
+              "voiceAdjustment": "+empathetic_0.3",
+              "weight": 0.3,
+              "reasoning": "new_sponsors_need_extra_reassurance_and_support"
+            },
+            {
+              "condition": "knowledge_gap_concern",
+              "voiceAdjustment": "+experienced_0.2",
+              "weight": 0.2,
+              "reasoning": "demonstrate_expertise_to_build_confidence"
+            }
+          ]
+        }
+      ],
+      "decisionFactors": [
+        "mentorship_quality",
+        "certainty_of_closing",
+        "learning_opportunities",
+        "partnership_support"
+      ],
+      "communicationPreferences": [
+        "educational_supportive",
+        "detailed_explanations",
+        "mentorship_focused"
+      ]
+    },
+    {
+      "id": "search_fund_operator",
+      "name": "Search Fund Operator",
+      "description": "MBA-backed entrepreneur seeking to acquire and operate a single company",
+      "parentSegment": "independent_sponsor",
+      "brandPersonalityAlignment": {
+        "primaryArchetype": "trusted_advisor_and_catalyst",
+        "resonantValues": ["entrepreneurial_spirit", "operational_excellence"],
+        "communicationStyle": "analytical_partnership_focused"
+      },
+      "demographics": {
+        "ageRange": "26-35",
+        "averageAge": 30,
+        "genderSplit": "70% male, 30% female",
+        "education": "100% bachelor's, 95% MBA",
+        "income": "$200k+ post-acquisition",
+        "companySize": "1 person + advisors",
+        "geography": {
+          "northeast": "40%",
+          "west_coast": "25%",
+          "southeast": "15%",
+          "midwest": "15%",
+          "texas": "5%"
+        }
+      },
+      "psychographics": {
+        "primaryMotivations": [
+          "entrepreneurial_ownership",
+          "operational_control",
+          "wealth_creation",
+          "career_transition"
+        ],
+        "coreFears": [
+          "search_timeline_pressure",
+          "single_opportunity_risk",
+          "investor_expectations",
+          "operational_challenges"
+        ],
+        "valuesHierarchy": [
+          "operational_excellence",
+          "strategic_partnership",
+          "long_term_value_creation",
+          "personal_autonomy"
+        ],
+        "workStyle": "analytical_methodical",
+        "decisionMaking": "data_driven_consensus_building",
+        "networking": "MBA_alumni_and_advisor_networks",
+        "behavioralTriggers": [
+          "thorough_due_diligence_approach",
+          "operational_improvement_focus",
+          "timeline_sensitivity"
+        ]
+      },
+      "painPoints": [
+        "capital_raising_friction",
+        "timeline_pressure",
+        "single_deal_risk",
+        "operational_readiness"
+      ],
+      "journeyStages": [
+        "awareness",
+        "evaluation",
+        "partnership",
+        "operations"
+      ],
+      "voicePreferences": [
+        {
+          "primary": "trustworthy",
+          "secondary": "empowering",
+          "situationalModifiers": [
+            {
+              "condition": "timeline_pressure",
+              "voiceAdjustment": "+trustworthy_0.2",
+              "weight": 0.2,
+              "reasoning": "time_constraints_require_certainty_emphasis"
+            },
+            {
+              "condition": "operational_focus",
+              "voiceAdjustment": "+empowering_0.15",
+              "weight": 0.15,
+              "reasoning": "operational_support_messaging_builds_confidence"
+            }
+          ]
+        }
+      ],
+      "decisionFactors": [
+        "operational_support",
+        "certainty_of_closing",
+        "partnership_quality",
+        "value_add_services"
+      ],
+      "communicationPreferences": [
+        "analytical_detailed",
+        "operational_focused",
+        "partnership_oriented"
+      ]
+    },
+    {
+      "id": "family_business_owner",
+      "name": "Family Business Owner",
+      "description": "Multi-generational business owner considering succession or growth capital",
+      "parentSegment": "legacy_founder",
+      "brandPersonalityAlignment": {
+        "primaryArchetype": "trusted_advisor_and_catalyst",
+        "resonantValues": ["partnership_over_transaction", "long_term_value_creation"],
+        "communicationStyle": "empathetic_respectful_with_tradition_awareness"
+      },
+      "demographics": {
+        "ageRange": "50-70",
+        "averageAge": 58,
+        "genderSplit": "65% male, 35% female",
+        "education": "75% bachelor's, 35% advanced degree",
+        "income": "varies by business size",
+        "companySize": "$10M-$75M revenue",
+        "geography": {
+          "midwest": "30%",
+          "southeast": "25%",
+          "northeast": "20%",
+          "texas": "15%",
+          "west_coast": "10%"
+        }
+      },
+      "psychographics": {
+        "primaryMotivations": [
+          "family_legacy_preservation",
+          "next_generation_preparation",
+          "business_continuity",
+          "family_financial_security"
+        ],
+        "coreFears": [
+          "family_tradition_disruption",
+          "next_generation_unpreparedness",
+          "cultural_values_erosion",
+          "family_conflict_creation"
+        ],
+        "valuesHierarchy": [
+          "family_harmony_and_legacy",
+          "tradition_and_continuity",
+          "employee_loyalty_and_welfare",
+          "community_responsibility"
+        ],
+        "workStyle": "relationship_focused_consensus_building",
+        "decisionMaking": "family_consensus_tradition_aware",
+        "networking": "family_business_associations_and_advisors",
+        "behavioralTriggers": [
+          "family_involvement_emphasis",
+          "tradition_and_values_focus",
+          "long_term_relationship_building"
+        ]
+      },
+      "painPoints": [
+        "family_legacy_preservation",
+        "succession_planning_complexity",
+        "next_generation_readiness",
+        "family_dynamics_management"
+      ],
+      "journeyStages": [
+        "awareness",
+        "evaluation",
+        "partnership",
+        "succession",
+        "legacy_stewardship"
       ],
       "voicePreferences": [
         {
@@ -280,24 +502,226 @@
           "secondary": "trustworthy",
           "situationalModifiers": [
             {
-              "condition": "family_business",
-              "voiceAdjustment": "+empathetic_0.1",
-              "weight": 0.1,
-              "reasoning": "emotional_attachment_requires_extra_understanding"
+              "condition": "family_dynamics",
+              "voiceAdjustment": "+empathetic_0.25",
+              "weight": 0.25,
+              "reasoning": "family_business_decisions_require_emotional_intelligence"
+            },
+            {
+              "condition": "legacy_concerns",
+              "voiceAdjustment": "+trustworthy_0.2",
+              "weight": 0.2,
+              "reasoning": "legacy_preservation_requires_proven_reliability"
             }
           ]
         }
       ],
       "decisionFactors": [
-        "cultural_values_alignment",
-        "employee_treatment_plans",
-        "business_continuity",
-        "financial_terms"
+        "family_values_alignment",
+        "legacy_preservation_plan",
+        "next_generation_development",
+        "cultural_continuity"
       ],
       "communicationPreferences": [
-        "relationship_building_first",
-        "face_to_face_meetings",
-        "detailed_explanations"
+        "family_inclusive_approach",
+        "tradition_respectful",
+        "long_term_relationship_focused"
+      ]
+    },
+    {
+      "id": "technology_founder",
+      "name": "Technology Founder",
+      "description": "Tech company founder considering growth capital or exit strategy",
+      "parentSegment": "legacy_founder",
+      "brandPersonalityAlignment": {
+        "primaryArchetype": "trusted_advisor_and_catalyst",
+        "resonantValues": ["entrepreneurial_spirit", "operational_excellence"],
+        "communicationStyle": "data_driven_innovation_focused"
+      },
+      "demographics": {
+        "ageRange": "30-50",
+        "averageAge": 40,
+        "genderSplit": "75% male, 25% female",
+        "education": "95% bachelor's, 70% STEM, 45% advanced degree",
+        "income": "highly variable based on equity",
+        "companySize": "$5M-$50M revenue",
+        "geography": {
+          "west_coast": "45%",
+          "northeast": "25%",
+          "texas": "15%",
+          "southeast": "10%",
+          "midwest": "5%"
+        }
+      },
+      "psychographics": {
+        "primaryMotivations": [
+          "innovation_and_disruption",
+          "market_dominance",
+          "wealth_creation",
+          "technology_advancement"
+        ],
+        "coreFears": [
+          "technology_obsolescence",
+          "market_timing_risk",
+          "scaling_challenges",
+          "competitive_disruption"
+        ],
+        "valuesHierarchy": [
+          "innovation_and_technology",
+          "speed_and_agility",
+          "market_disruption",
+          "intellectual_property_protection"
+        ],
+        "workStyle": "fast_paced_innovation_focused",
+        "decisionMaking": "data_driven_rapid_iteration",
+        "networking": "tech_industry_and_investor_networks",
+        "behavioralTriggers": [
+          "metrics_and_data_emphasis",
+          "scaling_and_growth_focus",
+          "technology_differentiation"
+        ]
+      },
+      "painPoints": [
+        "scaling_capital_requirements",
+        "market_timing_pressure",
+        "technology_obsolescence_risk",
+        "talent_acquisition_challenges"
+      ],
+      "journeyStages": [
+        "awareness",
+        "evaluation",
+        "partnership",
+        "scaling",
+        "exit_strategy"
+      ],
+      "voicePreferences": [
+        {
+          "primary": "experienced",
+          "secondary": "empowering",
+          "situationalModifiers": [
+            {
+              "condition": "scaling_challenges",
+              "voiceAdjustment": "+experienced_0.2",
+              "weight": 0.2,
+              "reasoning": "scaling_requires_proven_expertise_and_patterns"
+            },
+            {
+              "condition": "innovation_focus",
+              "voiceAdjustment": "+empowering_0.15",
+              "weight": 0.15,
+              "reasoning": "innovation_leaders_respond_to_empowerment_messaging"
+            }
+          ]
+        }
+      ],
+      "decisionFactors": [
+        "scaling_expertise",
+        "technology_understanding",
+        "market_timing_support",
+        "network_value_add"
+      ],
+      "communicationPreferences": [
+        "data_driven_metrics_focused",
+        "technology_literate",
+        "rapid_decision_making"
+      ]
+    },
+    {
+      "id": "manufacturing_owner",
+      "name": "Manufacturing Owner",
+      "description": "Traditional manufacturing business owner considering succession or growth",
+      "parentSegment": "legacy_founder",
+      "brandPersonalityAlignment": {
+        "primaryArchetype": "trusted_advisor_and_catalyst",
+        "resonantValues": ["operational_excellence", "long_term_value_creation"],
+        "communicationStyle": "practical_results_focused"
+      },
+      "demographics": {
+        "ageRange": "55-75",
+        "averageAge": 63,
+        "genderSplit": "80% male, 20% female",
+        "education": "70% bachelor's, 30% technical/trade education",
+        "income": "varies by business size",
+        "companySize": "$25M-$150M revenue",
+        "geography": {
+          "midwest": "40%",
+          "southeast": "30%",
+          "northeast": "15%",
+          "texas": "10%",
+          "west_coast": "5%"
+        }
+      },
+      "psychographics": {
+        "primaryMotivations": [
+          "operational_efficiency",
+          "workforce_stability",
+          "business_continuity",
+          "community_impact"
+        ],
+        "coreFears": [
+          "plant_closure_job_losses",
+          "manufacturing_outsourcing",
+          "regulatory_compliance_risks",
+          "economic_downturn_impact"
+        ],
+        "valuesHierarchy": [
+          "operational_excellence",
+          "workforce_loyalty",
+          "community_responsibility",
+          "practical_efficiency"
+        ],
+        "workStyle": "hands_on_process_focused",
+        "decisionMaking": "practical_consensus_building",
+        "networking": "manufacturing_associations_and_industry_groups",
+        "behavioralTriggers": [
+          "operational_efficiency_focus",
+          "workforce_impact_concern",
+          "practical_results_emphasis"
+        ]
+      },
+      "painPoints": [
+        "operational_modernization",
+        "workforce_transition",
+        "regulatory_compliance",
+        "succession_planning"
+      ],
+      "journeyStages": [
+        "awareness",
+        "evaluation",
+        "partnership",
+        "operational_improvement",
+        "succession"
+      ],
+      "voicePreferences": [
+        {
+          "primary": "trustworthy",
+          "secondary": "experienced",
+          "situationalModifiers": [
+            {
+              "condition": "operational_concerns",
+              "voiceAdjustment": "+experienced_0.2",
+              "weight": 0.2,
+              "reasoning": "operational_challenges_require_proven_manufacturing_expertise"
+            },
+            {
+              "condition": "workforce_impact",
+              "voiceAdjustment": "+empathetic_0.15",
+              "weight": 0.15,
+              "reasoning": "workforce_concerns_require_empathetic_communication"
+            }
+          ]
+        }
+      ],
+      "decisionFactors": [
+        "operational_improvement_capability",
+        "workforce_protection_commitment",
+        "manufacturing_expertise",
+        "practical_results_focus"
+      ],
+      "communicationPreferences": [
+        "practical_results_focused",
+        "operational_improvement_emphasis",
+        "workforce_consideration"
       ]
     }
   ],
@@ -548,6 +972,53 @@
         "linkedin_organic",
         "industry_publications",
         "warm_introductions"
+      ],
+      "dynamicTriggers": {
+        "progressionTo": {
+          "evaluation": [
+            "initial_response_received",
+            "credibility_established",
+            "mutual_interest_confirmed"
+          ]
+        },
+        "regressionRisks": [
+          "slow_response_time",
+          "generic_messaging",
+          "credibility_gaps"
+        ]
+      },
+      "touchpointOptimization": {
+        "highImpactMoments": [
+          "first_response_speed",
+          "initial_credibility_establishment",
+          "referral_quality"
+        ],
+        "relationshipBuilding": [
+          "personal_connection_establishment",
+          "industry_knowledge_demonstration",
+          "value_proposition_clarity"
+        ]
+      },
+      "channelEffectiveness": {
+        "serial_entrepreneur": {
+          "linkedin": 0.85,
+          "referrals": 0.95,
+          "industry_events": 0.8
+        },
+        "first_time_sponsor": {
+          "linkedin": 0.75,
+          "referrals": 0.9,
+          "industry_publications": 0.7
+        },
+        "family_business_owner": {
+          "referrals": 0.95,
+          "industry_associations": 0.85,
+          "advisor_introductions": 0.9
+        }
+      },
+      "offeringsAlignment": [
+        "equity_partnership",
+        "capital_solutions"
       ]
     },
     {
@@ -582,6 +1053,57 @@
         "direct_calls",
         "video_meetings",
         "in_person_meetings"
+      ],
+      "dynamicTriggers": {
+        "progressionTo": {
+          "partnership": [
+            "terms_agreed",
+            "due_diligence_completed",
+            "legal_documentation_finalized"
+          ]
+        },
+        "regressionTo": {
+          "awareness": [
+            "terms_misalignment",
+            "trust_breakdown",
+            "competitive_pressure"
+          ]
+        }
+      },
+      "touchpointOptimization": {
+        "highImpactMoments": [
+          "term_sheet_presentation",
+          "reference_quality",
+          "negotiation_flexibility"
+        ],
+        "relationshipBuilding": [
+          "trust_demonstration",
+          "value_proof_delivery",
+          "partnership_vision_alignment"
+        ]
+      },
+      "channelEffectiveness": {
+        "serial_entrepreneur": {
+          "phone": 0.9,
+          "video_meetings": 0.85,
+          "in_person": 0.95
+        },
+        "first_time_sponsor": {
+          "video_meetings": 0.8,
+          "in_person": 0.9,
+          "detailed_proposals": 0.85
+        },
+        "family_business_owner": {
+          "in_person": 0.95,
+          "phone": 0.85,
+          "family_meetings": 0.9
+        }
+      },
+      "offeringsAlignment": [
+        "equity_partnership",
+        "capital_solutions",
+        "operational_improvement",
+        "strategic_development"
       ]
     },
     {
@@ -616,6 +1138,259 @@
         "board_meetings",
         "direct_communication",
         "strategic_sessions"
+      ],
+      "dynamicTriggers": {
+        "progressionTo": {
+          "growth": [
+            "value_creation_plan_implemented",
+            "performance_targets_met",
+            "strategic_initiatives_launched"
+          ],
+          "exit_preparation": [
+            "value_maximization_achieved",
+            "market_timing_optimal",
+            "strategic_buyer_interest"
+          ]
+        },
+        "regressionTo": {
+          "evaluation": [
+            "performance_concerns",
+            "strategic_disagreements",
+            "market_changes"
+          ]
+        }
+      },
+      "touchpointOptimization": {
+        "highImpactMoments": [
+          "board_meeting_effectiveness",
+          "strategic_planning_sessions",
+          "performance_review_meetings"
+        ],
+        "relationshipBuilding": [
+          "ongoing_value_demonstration",
+          "proactive_support_delivery",
+          "strategic_guidance_quality"
+        ]
+      },
+      "channelEffectiveness": {
+        "serial_entrepreneur": {
+          "board_meetings": 0.95,
+          "strategic_sessions": 0.9,
+          "informal_updates": 0.8
+        },
+        "first_time_sponsor": {
+          "mentorship_sessions": 0.95,
+          "board_meetings": 0.9,
+          "operational_support": 0.85
+        },
+        "family_business_owner": {
+          "family_inclusive_meetings": 0.95,
+          "succession_planning": 0.9,
+          "cultural_alignment_sessions": 0.85
+        }
+      },
+      "offeringsAlignment": [
+        "equity_partnership",
+        "operational_improvement",
+        "strategic_development",
+        "performance_optimization",
+        "exit_planning"
+      ]
+    },
+    {
+      "id": "growth",
+      "name": "Growth",
+      "description": "Active value creation and business expansion phase",
+      "duration": "years_2-4",
+      "actions": [
+        "value_creation_initiatives",
+        "market_expansion",
+        "operational_improvements",
+        "strategic_acquisitions"
+      ],
+      "touchpoints": [
+        "monthly_performance_reviews",
+        "quarterly_strategic_sessions",
+        "annual_planning_retreats",
+        "ad_hoc_strategic_support"
+      ],
+      "mindset": "growth_focused_collaborative",
+      "painPoints": [
+        "scaling_challenges",
+        "resource_constraints",
+        "market_competition",
+        "execution_complexity"
+      ],
+      "successMetrics": [
+        "revenue_growth_achievement",
+        "margin_expansion",
+        "market_share_gains",
+        "operational_efficiency_improvements"
+      ],
+      "preferredChannels": [
+        "strategic_planning_sessions",
+        "operational_reviews",
+        "market_expansion_planning"
+      ],
+      "dynamicTriggers": {
+        "progressionTo": {
+          "exit_preparation": [
+            "target_performance_achieved",
+            "market_conditions_favorable",
+            "strategic_buyer_emergence"
+          ]
+        },
+        "maintainanceFactors": [
+          "consistent_performance_delivery",
+          "strategic_initiative_success",
+          "market_position_strengthening"
+        ]
+      },
+      "touchpointOptimization": {
+        "highImpactMoments": [
+          "quarterly_performance_reviews",
+          "strategic_initiative_launches",
+          "market_expansion_decisions"
+        ],
+        "relationshipBuilding": [
+          "value_creation_partnership",
+          "strategic_guidance_delivery",
+          "operational_support_excellence"
+        ]
+      },
+      "offeringsAlignment": [
+        "performance_optimization",
+        "market_expansion",
+        "operational_improvement",
+        "strategic_development",
+        "talent_acquisition"
+      ]
+    },
+    {
+      "id": "exit_preparation",
+      "name": "Exit Preparation",
+      "description": "Value maximization and exit strategy execution",
+      "duration": "months_6-18",
+      "actions": [
+        "exit_strategy_development",
+        "value_maximization_initiatives",
+        "buyer_identification",
+        "transaction_preparation"
+      ],
+      "touchpoints": [
+        "exit_planning_sessions",
+        "investment_banker_coordination",
+        "due_diligence_preparation",
+        "transaction_management"
+      ],
+      "mindset": "value_maximization_focused",
+      "painPoints": [
+        "market_timing_uncertainty",
+        "valuation_optimization",
+        "buyer_selection",
+        "transaction_complexity"
+      ],
+      "successMetrics": [
+        "valuation_achievement",
+        "transaction_completion",
+        "stakeholder_satisfaction",
+        "return_optimization"
+      ],
+      "preferredChannels": [
+        "exit_planning_sessions",
+        "investment_banking_coordination",
+        "strategic_buyer_meetings"
+      ],
+      "dynamicTriggers": {
+        "completionFactors": [
+          "successful_transaction_close",
+          "target_returns_achieved",
+          "stakeholder_objectives_met"
+        ]
+      },
+      "touchpointOptimization": {
+        "highImpactMoments": [
+          "exit_strategy_presentation",
+          "buyer_introduction_meetings",
+          "transaction_closing"
+        ],
+        "relationshipBuilding": [
+          "exit_expertise_demonstration",
+          "transaction_management_excellence",
+          "stakeholder_advocacy"
+        ]
+      },
+      "offeringsAlignment": [
+        "exit_planning",
+        "strategic_development",
+        "competitive_positioning",
+        "value_maximization"
+      ]
+    },
+    {
+      "id": "succession",
+      "name": "Succession",
+      "description": "Family business or founder succession planning and execution",
+      "duration": "years_1-3",
+      "actions": [
+        "succession_planning",
+        "next_generation_development",
+        "governance_structure_creation",
+        "transition_management"
+      ],
+      "touchpoints": [
+        "family_governance_meetings",
+        "succession_planning_sessions",
+        "next_generation_mentoring",
+        "transition_milestone_reviews"
+      ],
+      "mindset": "legacy_preservation_focused",
+      "painPoints": [
+        "family_dynamics_management",
+        "next_generation_readiness",
+        "governance_complexity",
+        "cultural_continuity"
+      ],
+      "successMetrics": [
+        "succession_plan_completion",
+        "next_generation_preparation",
+        "governance_effectiveness",
+        "cultural_preservation"
+      ],
+      "preferredChannels": [
+        "family_inclusive_planning",
+        "succession_advisory_sessions",
+        "governance_development_meetings"
+      ],
+      "dynamicTriggers": {
+        "progressionFactors": [
+          "family_consensus_achievement",
+          "next_generation_readiness",
+          "governance_structure_implementation"
+        ],
+        "challengeFactors": [
+          "family_disagreements",
+          "succession_timeline_pressure",
+          "governance_complexity"
+        ]
+      },
+      "touchpointOptimization": {
+        "highImpactMoments": [
+          "family_governance_establishment",
+          "succession_plan_finalization",
+          "transition_milestone_achievement"
+        ],
+        "relationshipBuilding": [
+          "family_harmony_facilitation",
+          "next_generation_development",
+          "legacy_preservation_commitment"
+        ]
+      },
+      "offeringsAlignment": [
+        "succession_planning",
+        "governance_development",
+        "next_generation_preparation",
+        "cultural_continuity"
       ]
     }
   ],

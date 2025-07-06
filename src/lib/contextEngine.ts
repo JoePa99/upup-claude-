@@ -8,7 +8,9 @@ import {
   CustomerSegment,
   ChannelRecommendation,
   MessageFramework,
-  RuleCondition
+  RuleCondition,
+  JourneyStage,
+  Psychographics
 } from '@/types/ontology';
 import ontologyData from '@/data/ontology.json';
 
@@ -342,6 +344,7 @@ Include specific proof points and personalize based on the context provided.`;
     const culturalContext = this.applyCulturalModifiers(formData, segment);
     const stakeholderContext = this.getStakeholderContext();
     const competitiveIntelligence = this.getCompetitiveIntelligence();
+    const behavioralTriggers = this.getBehavioralTriggersContext(segment);
 
     const masterPrompt = `You are creating content for ${segment.name}s representing ${this.ontology.foundation?.companyProfile?.name || 'Plexus Capital'} - ${this.ontology.foundation?.companyProfile?.missionStatement || 'a strategic capital partner'}.
 
@@ -359,6 +362,7 @@ TARGET AUDIENCE PROFILE:
 Segment: ${segment.name} - ${segment.description.toLowerCase()}
 ${journeyStage ? `Current Stage: ${journeyStage.name} - ${journeyStage.description}` : ''}
 Sub-segment Focus: ${this.getSubSegmentContext(formData.segment)}
+${this.getBrandPersonalityAlignment(segment)}
 
 Demographics & Firmographics:
 - Age: ${segment.demographics.ageRange}
@@ -375,6 +379,7 @@ Motivational Drivers: ${segment.psychographics.primaryMotivations.join(', ')}
 Core Fears & Anxieties: ${segment.psychographics.coreFears.join(', ')}
 Values Hierarchy: ${segment.psychographics.valuesHierarchy.join(', ')}
 Decision Making Style: ${segment.psychographics.decisionMaking || 'Not specified'}
+${behavioralTriggers}
 ${culturalContext}
 
 STAKEHOLDER ECOSYSTEM AWARENESS:
@@ -613,13 +618,23 @@ Emerging Trends: ${marketDynamics.marketTrends?.emerging?.slice(0, 2).join(', ')
    * Get sub-segment context for more targeted messaging
    */
   private getSubSegmentContext(segmentId: string): string {
+    const segment = this.getCustomerSegment(segmentId);
+    if (!segment) return 'General segment approach';
+
+    // Check if this is already a sub-segment with parent segment reference
+    const parentSegment = (segment as CustomerSegment & {parentSegment?: string}).parentSegment;
+    if (parentSegment) {
+      return `Sub-segment of ${parentSegment}: ${segment.description}`;
+    }
+
+    // Get related sub-segments from market hierarchy
     const segmentHierarchy = this.ontology.market?.segmentHierarchy;
-    if (!segmentHierarchy) return 'General segment approach';
+    const subSegments = segmentHierarchy?.subSegments?.[segmentId];
+    if (subSegments && subSegments.length > 0) {
+      return `Potential sub-segments: ${subSegments.join(', ')} - Consider specific sub-segment needs`;
+    }
 
-    const subSegments = segmentHierarchy.subSegments?.[segmentId];
-    if (!subSegments) return 'Primary segment focus';
-
-    return `Potential sub-segments: ${subSegments.join(', ')} - Consider specific sub-segment needs`;
+    return 'Primary segment focus';
   }
 
   /**
@@ -642,6 +657,15 @@ Emerging Trends: ${marketDynamics.marketTrends?.emerging?.slice(0, 2).join(', ')
    * Get core services alignment based on customer needs
    */
   private getCoreServicesAlignment(formData: ContextFormData): string {
+    // First check journey stage specific offerings alignment
+    const journeyStage = this.ontology.journeyStages.find(js => js.id === formData.journeyStage);
+    const journeyOfferingsAlignment = (journeyStage as JourneyStage & {offeringsAlignment?: string[]})?.offeringsAlignment;
+    
+    if (journeyOfferingsAlignment && journeyOfferingsAlignment.length > 0) {
+      return journeyOfferingsAlignment.slice(0, 3).join(', ');
+    }
+
+    // Fallback to core services based on segment targeting
     const coreServices = this.ontology.offerings?.coreServices;
     if (!coreServices) return 'Integrated capital and advisory services';
 
@@ -667,9 +691,46 @@ Emerging Trends: ${marketDynamics.marketTrends?.emerging?.slice(0, 2).join(', ')
   }
 
   /**
+   * Get behavioral triggers context for personalization
+   */
+  private getBehavioralTriggersContext(segment: CustomerSegment): string {
+    const behavioralTriggers = (segment.psychographics as Psychographics & {behavioralTriggers?: string[]})?.behavioralTriggers;
+    if (!behavioralTriggers || behavioralTriggers.length === 0) {
+      return 'Standard behavioral patterns apply';
+    }
+
+    return `Key Behavioral Triggers: ${behavioralTriggers.join(', ')} - Adapt messaging when these patterns are observed`;
+  }
+
+  /**
+   * Get brand personality alignment for the segment
+   */
+  private getBrandPersonalityAlignment(segment: CustomerSegment): string {
+    const brandAlignment = (segment as CustomerSegment & {brandPersonalityAlignment?: {primaryArchetype?: string; resonantValues?: string[]; communicationStyle?: string}})?.brandPersonalityAlignment;
+    if (!brandAlignment) return '';
+
+    return `Brand Alignment: ${brandAlignment.primaryArchetype || 'Not specified'} archetype with ${brandAlignment.resonantValues?.join(', ') || 'core values'} emphasis, ${brandAlignment.communicationStyle || 'standard communication style'}`;
+  }
+
+  /**
    * Get channel optimization recommendations
    */
   private getChannelOptimization(formData: ContextFormData): string {
+    // First check journey stage specific channel effectiveness
+    const journeyStage = this.ontology.journeyStages.find(js => js.id === formData.journeyStage);
+    const journeyChannelEffectiveness = (journeyStage as JourneyStage & {channelEffectiveness?: Record<string, Record<string, number>>})?.channelEffectiveness?.[formData.segment];
+    
+    if (journeyChannelEffectiveness) {
+      const topChannels = Object.entries(journeyChannelEffectiveness)
+        .sort(([,a], [,b]) => (b as number) - (a as number))
+        .slice(0, 2)
+        .map(([channel, effectiveness]) => `${channel} (${Math.round((effectiveness as number) * 100)}% effective)`)
+        .join(', ');
+      
+      if (topChannels) return topChannels;
+    }
+
+    // Fallback to engagement layer channel effectiveness
     const channelEffectiveness = this.ontology.engagement?.channelStrategy?.channelEffectiveness;
     if (!channelEffectiveness) return 'Multi-channel approach with personalized touch';
 
