@@ -7,7 +7,7 @@ export interface CustomerSegment {
   psychographics: Psychographics;
   painPoints: string[];
   journeyStages: string[];
-  voicePreferences: string[];
+  voicePreferences: VoicePreference[];
   decisionFactors: string[];
   communicationPreferences: string[];
 }

@@ -12,7 +12,8 @@ import {
   ContextFormData, 
   GeneratedContext, 
   QualityMetrics,
-  PainPointPriority 
+  PainPointPriority,
+  CustomerSegment 
 } from '@/types/ontology';
 import { contextEngine } from '@/lib/contextEngine';
 import ontologyData from '@/data/ontology.json';
@@ -229,7 +230,7 @@ export default function ContextBuilderForm({ className }: ContextBuilderFormProp
               {/* Step Content */}
               {currentStep === 0 && (
                 <SmartSegmentPicker
-                  segments={ontologyData.customerSegments}
+                  segments={ontologyData.customerSegments as CustomerSegment[]}
                   selectedSegment={formData.segment}
                   onSegmentChange={handleSegmentChange}
                 />
