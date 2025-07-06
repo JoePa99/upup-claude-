@@ -278,8 +278,8 @@ export interface OntologyData {
   voiceAttributes: VoiceAttribute[];
   painPoints: PainPoint[];
   journeyStages: JourneyStage[];
-  messageFrameworks: MessageFramework[];
-  competitiveContexts: CompetitiveContext[];
+  messageFrameworks?: MessageFramework[];
+  competitiveContexts?: CompetitiveContext[];
   relationshipRules: RelationshipRule[];
 }
 

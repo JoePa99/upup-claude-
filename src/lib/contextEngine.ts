@@ -95,7 +95,7 @@ export class ContextEngine {
     });
 
     // Apply relationship rules
-    this.ontology.relationshipRules.forEach(rule => {
+    this.ontology.relationshipRules?.forEach(rule => {
       if (this.matchesRuleCondition(rule.condition, formData)) {
         Object.entries(rule.effect.voiceAdjustment || {}).forEach(([voice, adjustment]) => {
           weights[voice] = (weights[voice] || 0) + adjustment;
