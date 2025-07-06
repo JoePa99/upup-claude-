@@ -16,7 +16,7 @@ export class ContextEngine {
   private ontology: OntologyData;
 
   constructor() {
-    this.ontology = ontologyData as OntologyData;
+    this.ontology = ontologyData as unknown as OntologyData;
   }
 
   /**
