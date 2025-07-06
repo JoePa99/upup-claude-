@@ -95,71 +95,8 @@ interface PromptSectionProps {
   copyable?: boolean;
 }
 
-const PromptSection: React.FC<PromptSectionProps> = ({
-  title,
-  content,
-  isExpanded,
-  onToggle,
-  copyable = true
-}) => {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(content);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error('Failed to copy text:', err);
-    }
-  };
-
-  return (
-    <Card>
-      <CardHeader 
-        className="cursor-pointer hover:bg-gray-50 transition-colors"
-        onClick={onToggle}
-      >
-        <div className="flex items-center justify-between">
-          <CardTitle className="text-sm">{title}</CardTitle>
-          <div className="flex items-center gap-2">
-            {copyable && (
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleCopy();
-                }}
-                className="h-8 w-8 p-0"
-              >
-                {copied ? (
-                  <CheckCircle className="h-4 w-4 text-green-600" />
-                ) : (
-                  <Copy className="h-4 w-4" />
-                )}
-              </Button>
-            )}
-            {isExpanded ? (
-              <EyeOff className="h-4 w-4" />
-            ) : (
-              <Eye className="h-4 w-4" />
-            )}
-          </div>
-        </div>
-      </CardHeader>
-      {isExpanded && (
-        <CardContent>
-          <div className="bg-gray-50 rounded-lg p-4 border">
-            <pre className="text-xs whitespace-pre-wrap font-mono text-gray-700">
-              {content}
-            </pre>
-          </div>
-        </CardContent>
-      )}
-    </Card>
-  );
-};
+// Legacy component - removed from UI but kept for compatibility
+const PromptSection: React.FC<PromptSectionProps> = () => null;
 
 export const ContextPreview: React.FC<ContextPreviewProps> = ({
   generatedContext,
@@ -167,18 +104,9 @@ export const ContextPreview: React.FC<ContextPreviewProps> = ({
   isLoading = false,
   className
 }) => {
-  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
-    system: false,
-    context: false,
-    task: false
-  });
-
-  const toggleSection = (section: string) => {
-    setExpandedSections(prev => ({
-      ...prev,
-      [section]: !prev[section]
-    }));
-  };
+  // Legacy state - no longer used in simplified UI
+  const [, setExpandedSections] = useState<Record<string, boolean>>({});
+  const toggleSection = () => {};
 
   const handleDownload = () => {
     if (!generatedContext) return;
@@ -370,7 +298,7 @@ export const ContextPreview: React.FC<ContextPreviewProps> = ({
             </pre>
           </div>
           <div className="mt-4 text-xs text-gray-500 bg-gray-50 rounded p-3">
-            <strong>Usage:</strong> Copy the prompt above → Paste into your AI tool → Add your specific content request (e.g., "Create a LinkedIn post about our new feature")
+            <strong>Usage:</strong> Copy the prompt above → Paste into your AI tool → Add your specific content request (e.g., &ldquo;Create a LinkedIn post about our new feature&rdquo;)
           </div>
         </CardContent>
       </Card>
