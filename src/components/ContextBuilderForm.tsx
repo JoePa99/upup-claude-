@@ -13,7 +13,8 @@ import {
   GeneratedContext, 
   QualityMetrics,
   PainPointPriority,
-  CustomerSegment 
+  CustomerSegment,
+  PainPoint 
 } from '@/types/ontology';
 import { contextEngine } from '@/lib/contextEngine';
 import ontologyData from '@/data/ontology.json';
@@ -238,7 +239,7 @@ export default function ContextBuilderForm({ className }: ContextBuilderFormProp
 
               {currentStep === 1 && formData.segment && (
                 <DragDropPainPointRanker
-                  painPoints={ontologyData.painPoints}
+                  painPoints={ontologyData.painPoints as PainPoint[]}
                   selectedPainPoints={formData.painPointPriorities}
                   onPainPointsChange={handlePainPointsChange}
                   segmentId={formData.segment}
