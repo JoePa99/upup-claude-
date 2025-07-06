@@ -333,31 +333,47 @@ export const ContextPreview: React.FC<ContextPreviewProps> = ({
         />
       </div>
 
-      {/* Generated Prompts */}
-      <div className="space-y-4">
-        <h3 className="text-lg font-semibold">Generated AI Context</h3>
-        
-        <PromptSection
-          title="System Prompt (AI Personality & Expertise)"
-          content={generatedContext.systemPrompt}
-          isExpanded={expandedSections.system}
-          onToggle={() => toggleSection('system')}
-        />
-        
-        <PromptSection
-          title="Context Prompt (Situational Intelligence)"
-          content={generatedContext.contextPrompt}
-          isExpanded={expandedSections.context}
-          onToggle={() => toggleSection('context')}
-        />
-        
-        <PromptSection
-          title="Task Prompt (Output Requirements)"
-          content={generatedContext.taskPrompt}
-          isExpanded={expandedSections.task}
-          onToggle={() => toggleSection('task')}
-        />
-      </div>
+      {/* Master Prompt */}
+      <Card className="border-2 border-blue-200 bg-blue-50/30">
+        <CardHeader>
+          <div className="flex items-center justify-between">
+            <CardTitle className="flex items-center gap-2 text-lg">
+              <MessageSquare className="h-5 w-5 text-blue-600" />
+              Master Prompt for Content Creation
+            </CardTitle>
+            <div className="flex items-center gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={async () => {
+                  try {
+                    await navigator.clipboard.writeText(generatedContext.systemPrompt);
+                  } catch (err) {
+                    console.error('Failed to copy:', err);
+                  }
+                }}
+                className="h-8"
+              >
+                <Copy className="h-4 w-4 mr-2" />
+                Copy Prompt
+              </Button>
+            </div>
+          </div>
+          <p className="text-sm text-gray-600">
+            Copy this prompt and paste it into ChatGPT, Claude, or any AI tool to create content that resonates with your target audience.
+          </p>
+        </CardHeader>
+        <CardContent>
+          <div className="bg-white rounded-lg border border-gray-200 p-4 max-h-96 overflow-y-auto">
+            <pre className="text-sm whitespace-pre-wrap font-mono text-gray-800 leading-relaxed">
+              {generatedContext.systemPrompt}
+            </pre>
+          </div>
+          <div className="mt-4 text-xs text-gray-500 bg-gray-50 rounded p-3">
+            <strong>Usage:</strong> Copy the prompt above → Paste into your AI tool → Add your specific content request (e.g., "Create a LinkedIn post about our new feature")
+          </div>
+        </CardContent>
+      </Card>
 
       {/* Context Metadata */}
       {generatedContext.metadata && (

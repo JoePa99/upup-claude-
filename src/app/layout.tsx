@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Context Builder | Intelligent Customer Context Generation",
-  description: "Transform business intelligence into optimized AI prompts for better customer interactions. Generate personalized context for sales and marketing communications.",
+  title: "AI Content Prompt Generator | Audience-Intelligent Content Creation",
+  description: "Generate smart AI prompts for creating compelling emails, ads, blog posts, and strategic content. Leverage business intelligence to make your content resonate with target audiences.",
 };
 
 export default function RootLayout({

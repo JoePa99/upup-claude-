@@ -139,7 +139,7 @@ export default function ContextBuilderForm({ className }: ContextBuilderFormProp
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg flex items-center gap-2">
                   <Target className="h-5 w-5" />
-                  Pain Points
+                  Audience Challenges
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -263,7 +263,7 @@ export default function ContextBuilderForm({ className }: ContextBuilderFormProp
                 </div>
 
                 <div>
-                  <Label htmlFor="output-type">Output</Label>
+                  <Label htmlFor="output-type">Content Type</Label>
                   <Select 
                     value={formData.outputType} 
                     onValueChange={(value: string) => updateFormData({ outputType: value as 'email' | 'presentation' | 'proposal' | 'strategy' | 'content' })}
@@ -272,11 +272,13 @@ export default function ContextBuilderForm({ className }: ContextBuilderFormProp
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="email">Email</SelectItem>
+                      <SelectItem value="email">Marketing Email</SelectItem>
+                      <SelectItem value="content">Blog Post/Article</SelectItem>
+                      <SelectItem value="social">Social Media Post</SelectItem>
+                      <SelectItem value="ad">Advertisement</SelectItem>
                       <SelectItem value="presentation">Presentation</SelectItem>
-                      <SelectItem value="proposal">Proposal</SelectItem>
-                      <SelectItem value="strategy">Strategy</SelectItem>
-                      <SelectItem value="content">Content</SelectItem>
+                      <SelectItem value="proposal">Sales Proposal</SelectItem>
+                      <SelectItem value="strategy">Strategic Content</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -339,7 +341,7 @@ export default function ContextBuilderForm({ className }: ContextBuilderFormProp
                   });
                 }}
               >
-                🔥 Cold Outreach - Independent Sponsor
+                🔥 Cold Email - Independent Sponsor
               </Button>
               
               <Button
@@ -361,7 +363,7 @@ export default function ContextBuilderForm({ className }: ContextBuilderFormProp
                   });
                 }}
               >
-                🏢 Legacy Exit Proposal
+                🏢 Legacy Founder Content
               </Button>
               
               <Button
@@ -383,7 +385,7 @@ export default function ContextBuilderForm({ className }: ContextBuilderFormProp
                   });
                 }}
               >
-                ⚡ Deal Support - Active Partnership
+                ⚡ Partnership Content - Active Deals
               </Button>
             </CardContent>
           </Card>
@@ -400,11 +402,10 @@ export default function ContextBuilderForm({ className }: ContextBuilderFormProp
                     size="sm"
                     className="w-full justify-start"
                     onClick={async () => {
-                      const allPrompts = `SYSTEM PROMPT:\n${generatedContext.systemPrompt}\n\nCONTEXT PROMPT:\n${generatedContext.contextPrompt}\n\nTASK PROMPT:\n${generatedContext.taskPrompt}`;
-                      await navigator.clipboard.writeText(allPrompts);
+                      await navigator.clipboard.writeText(generatedContext.systemPrompt);
                     }}
                   >
-                    📋 Copy All Prompts
+                    📋 Copy Master Prompt
                   </Button>
                   
                   <Button

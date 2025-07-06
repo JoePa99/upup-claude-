@@ -6,11 +6,11 @@ export default function Home() {
       <div className="container mx-auto">
         <header className="text-center py-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            AI Context Builder
+            AI Content Prompt Generator
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Transform your business intelligence into powerful, personalized AI prompts 
-            that drive better customer interactions and higher conversion rates.
+            Generate audience-intelligent prompts for creating compelling emails, ads, blog posts, and strategic content. 
+            Leverage deep business intelligence to make your AI-generated content resonate with your target audience.
           </p>
         </header>
         <ContextBuilderForm />

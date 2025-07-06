@@ -53,15 +53,13 @@ export class ContextEngine {
       competitiveDifferentiation: this.getCompetitiveDifferentiation(formData)
     };
 
-    // Step 8: Generate prompts
-    const systemPrompt = this.buildSystemPrompt(formData, segment, voiceWeights);
-    const contextPrompt = this.buildContextPrompt(formData, segment, metadata);
-    const taskPrompt = this.buildTaskPrompt(formData, messageFramework);
+    // Step 8: Generate master prompt
+    const masterPrompt = this.buildMasterPrompt(formData, segment, voiceWeights, messageFramework, metadata);
 
     return {
-      systemPrompt,
-      contextPrompt,
-      taskPrompt,
+      systemPrompt: masterPrompt,
+      contextPrompt: '', // Legacy compatibility
+      taskPrompt: '', // Legacy compatibility
       metadata,
       qualityScore: qualityMetrics.overallScore,
       suggestions
@@ -313,6 +311,77 @@ ${outputInstructions}
 ${lengthGuidance}
 
 Include specific proof points and personalize based on the context provided.`;
+  }
+
+  /**
+   * Build comprehensive master prompt that incorporates all business intelligence
+   */
+  private buildMasterPrompt(
+    formData: ContextFormData, 
+    segment: CustomerSegment, 
+    voiceWeights: Record<string, number>,
+    messageFramework: MessageFramework,
+    metadata: ContextMetadata
+  ): string {
+    const journeyStage = this.ontology.journeyStages.find(js => js.id === formData.journeyStage);
+    const primaryVoice = Object.entries(voiceWeights).reduce((a, b) => 
+      voiceWeights[a[0]] > voiceWeights[b[0]] ? a : b
+    )[0];
+    const primaryVoiceAttr = this.ontology.voiceAttributes.find(va => va.id === primaryVoice);
+
+    // Get ranked pain points
+    const rankedPainPoints = formData.painPointPriorities
+      .sort((a, b) => a.priority - b.priority)
+      .map(pp => {
+        const painPoint = this.ontology.painPoints.find(p => p.id === pp.painPointId);
+        return painPoint ? `(${pp.priority}) ${painPoint.name} - ${painPoint.description}` : '';
+      })
+      .filter(Boolean);
+
+    const masterPrompt = `You are creating content for ${segment.name}s - ${segment.description.toLowerCase()}.
+
+TARGET AUDIENCE PROFILE:
+${journeyStage ? `Current Stage: ${journeyStage.name} - ${journeyStage.description}` : ''}
+
+Demographics:
+- Age: ${segment.demographics.ageRange}
+- Education: ${segment.demographics.education}
+- Income: ${segment.demographics.income}
+- Company Size: ${segment.demographics.companySize || 'Not specified'}
+
+KEY AUDIENCE INSIGHTS:
+Primary Pain Points:
+${rankedPainPoints.map(pp => `• ${pp}`).join('\n')}
+
+Core Motivations: ${segment.psychographics.primaryMotivations.join(', ')}
+Core Fears: ${segment.psychographics.coreFears.join(', ')}
+Values Hierarchy: ${segment.psychographics.valuesHierarchy.join(', ')}
+Decision Making: ${segment.psychographics.decisionMaking || 'Not specified'}
+
+CONTENT GUIDELINES:
+Tone & Voice: ${primaryVoiceAttr?.name} - ${primaryVoiceAttr?.description}
+Communication Style: ${primaryVoiceAttr?.communicationStyle}
+
+Message Structure:
+- Hook: ${messageFramework.structure.hook}
+- Body: ${messageFramework.structure.body}  
+- Close: ${messageFramework.structure.close}
+
+Proof Points (in order of priority): ${messageFramework.proofPointPriorities.join(', ')}
+
+Key Phrases to Use: ${primaryVoiceAttr?.keyPhrases.join(', ')}
+
+WHAT TO ALWAYS DO: ${primaryVoiceAttr?.do.join(', ')}
+WHAT TO NEVER DO: ${primaryVoiceAttr?.dont.join(', ')}
+
+CONTEXT:
+Relationship Stage: ${formData.relationshipStage?.replace('_', ' ')}
+Urgency Level: ${formData.urgencyLevel}
+${formData.competitiveContext ? `Competitive Situation: Yes - Emphasize differentiators: ${metadata.competitiveDifferentiation.join(', ')}` : ''}
+
+Now create a ${formData.outputType} that incorporates all these insights to resonate specifically with this ${segment.name} audience. Make it ${formData.urgencyLevel === 'high' ? 'urgent and action-oriented' : formData.urgencyLevel === 'low' ? 'informative and relationship-building' : 'balanced and professional'}.`;
+
+    return masterPrompt;
   }
 
   /**
